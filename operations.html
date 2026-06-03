@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BASE Carriers — How the Operation Works | Sales Onboarding</title>
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+  :root{
+    --navy:#0c2340; --navy2:#143a66; --blue:#1d6fd6; --sky:#e8f1fc;
+    --gold:#f4b41a; --green:#1f9d57; --red:#d64545; --ink:#1a2332;
+    --muted:#5b6b7e; --line:#dbe4ee; --bg:#f6f9fc; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:54px 0 60px}
+  .hero h1{font-size:40px;margin:0 0 6px;letter-spacing:-.5px}
+  .hero .tag{font-size:19px;color:#bcd4f0;font-weight:500}
+  .hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    padding:6px 13px;border-radius:30px;font-size:13.5px;font-weight:600}
+  .pill.gold{background:var(--gold);color:#3a2c00;border-color:var(--gold)}
+  nav.toc{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;
+    box-shadow:0 2px 14px rgba(0,0,0,.18)}
+  nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;padding:8px 22px}
+  nav.toc a{color:#cfe0f5;text-decoration:none;font-size:13px;font-weight:600;
+    padding:7px 11px;border-radius:7px}
+  nav.toc a:hover{background:rgba(255,255,255,.12);color:#fff}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:27px;color:var(--navy);margin:0 0 4px;letter-spacing:-.3px}
+  h2 .num{display:inline-block;background:var(--blue);color:#fff;width:34px;height:34px;
+    border-radius:9px;text-align:center;line-height:34px;font-size:16px;margin-right:11px;vertical-align:middle}
+  .lead{color:var(--muted);font-size:17px;margin:2px 0 22px}
+  h3{font-size:19px;color:var(--navy2);margin:26px 0 8px}
+  p{margin:11px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:16px 0;box-shadow:0 1px 3px rgba(12,35,64,.05)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px;
+    background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  th{background:var(--navy);color:#fff;text-align:left;padding:11px 13px;font-size:13px;
+    text-transform:uppercase;letter-spacing:.4px}
+  td{padding:10px 13px;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#fafcfe}
+  .yes{color:var(--green);font-weight:700}
+  .no{color:var(--red);font-weight:700}
+  .callout{border-left:5px solid var(--blue);background:var(--sky);border-radius:0 12px 12px 0;
+    padding:15px 20px;margin:18px 0}
+  .callout.gold{border-color:var(--gold);background:#fff8e6}
+  .callout.green{border-color:var(--green);background:#eafaf1}
+  .callout b{color:var(--navy)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  /* process steps */
+  .steps{counter-reset:step;margin:18px 0}
+  .step{position:relative;padding:14px 18px 14px 64px;background:#fff;border:1px solid var(--line);
+    border-radius:12px;margin:10px 0}
+  .step:before{counter-increment:step;content:counter(step);position:absolute;left:16px;top:14px;
+    width:34px;height:34px;background:var(--blue);color:#fff;border-radius:50%;
+    text-align:center;line-height:34px;font-weight:700}
+  .step b{color:var(--navy)}
+  .step .time{float:right;background:var(--navy);color:#fff;font-size:12px;font-weight:700;
+    padding:3px 9px;border-radius:20px}
+  /* mock UI */
+  .mock{border:1px solid #c7d4e2;border-radius:12px;overflow:hidden;margin:16px 0;
+    box-shadow:0 6px 22px rgba(12,35,64,.12);background:#fff}
+  .mock .bar{background:#0c2340;color:#fff;padding:9px 14px;font-size:13px;font-weight:700;
+    display:flex;align-items:center;gap:8px}
+  .mock .bar .dot{width:11px;height:11px;border-radius:50%;background:#f4b41a}
+  .mock .body{padding:0}
+  .lb-row{display:grid;grid-template-columns:80px 1.4fr 1fr 80px 90px;gap:0;
+    border-top:1px solid var(--line);font-size:13px}
+  .lb-row.head{background:#eef4fb;font-weight:700;color:var(--navy);border-top:none}
+  .lb-row div{padding:9px 12px;border-right:1px solid var(--line)}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700}
+  .b-transit{background:#fff3d6;color:#8a6500}
+  .b-deliv{background:#e0f5e9;color:#136b3a}
+  .b-book{background:#e2edfb;color:#13407d}
+  .email-mock{font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .email-mock .from{color:var(--muted);font-size:13px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+  .glossary dt{font-weight:700;color:var(--navy);margin-top:14px;font-size:16px}
+  .glossary dd{margin:3px 0 0;color:#33414f}
+  .glossary .es{color:var(--blue);font-style:italic}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+  @media(max-width:720px){.kpi{grid-template-columns:1fr 1fr}}
+  .kpi .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .kpi .n{font-size:26px;font-weight:800;color:var(--blue)}
+  .kpi .l{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:3px}
+  footer{padding:30px 0 60px;color:var(--muted);font-size:13px}
+  .tagline{font-size:13px;color:var(--muted)}
+  .flowsvg{width:100%;height:auto;display:block;margin:8px 0}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>How BASE Carriers Works</h1>
+    <div class="tag">Sales Onboarding — the operation, the money, and the lingo</div>
+    <div class="meta">
+      <span class="pill gold">Start here, Day 1</span>
+      <span class="pill">BASE Carriers Transport LLC</span>
+      <span class="pill">MC-1299577 · DOT-3707179</span>
+      <span class="pill">BMC-84 Bonded · Port of Wilmington DE</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#what">1 · What We Are</a>
+  <a href="#money">2 · How We Make Money</a>
+  <a href="#trip">3 · A Load, Step by Step</a>
+  <a href="#provide">4 · BASE vs. Carrier</a>
+  <a href="#lanes">5 · The Lanes</a>
+  <a href="#customers">6 · The Customers</a>
+  <a href="#backhaul">7 · The Backhaul</a>
+  <a href="#tools">8 · The Tools</a>
+  <a href="#lingo">9 · Trucking Lingo</a>
+  <a href="#spanish">10 · Spanish / Spanglish</a>
+  <a href="#fieldrules">11 · Field Rules</a>
+  <a href="#rhythm">12 · The Daily Rhythm</a>
+</div></nav>
+
+<!-- 1 -->
+<section id="what"><div class="wrap">
+  <h2><span class="num">1</span>What We Are</h2>
+  <div class="lead">A licensed freight broker that controls real port contracts — and dispatches owner-operators to run them.</div>
+
+  <p>BASE Carriers sits in the middle of three parties. We hold the <b>customer relationships</b> (the people who own the freight) and the <b>port credentials</b> on one side, and a network of <b>owner-operator trucking companies</b> on the other. We connect the load to the truck and keep the spread.</p>
+
+  <svg class="flowsvg" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#1d6fd6"/></marker></defs>
+    <rect x="20" y="45" width="230" height="90" rx="14" fill="#e8f1fc" stroke="#1d6fd6" stroke-width="2"/>
+    <text x="135" y="80" text-anchor="middle" font-size="18" font-weight="700" fill="#0c2340">🍌 CUSTOMER</text>
+    <text x="135" y="103" text-anchor="middle" font-size="12.5" fill="#5b6b7e">Banana ripeners /</text>
+    <text x="135" y="120" text-anchor="middle" font-size="12.5" fill="#5b6b7e">importers (the shipper)</text>
+
+    <rect x="335" y="35" width="230" height="110" rx="14" fill="#0c2340" stroke="#f4b41a" stroke-width="3"/>
+    <text x="450" y="75" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">BASE CARRIERS</text>
+    <text x="450" y="98" text-anchor="middle" font-size="12.5" fill="#bcd4f0">Broker + port contracts</text>
+    <text x="450" y="116" text-anchor="middle" font-size="12.5" fill="#f4b41a">keeps the spread (margin)</text>
+
+    <rect x="650" y="45" width="230" height="90" rx="14" fill="#eafaf1" stroke="#1f9d57" stroke-width="2"/>
+    <text x="765" y="80" text-anchor="middle" font-size="18" font-weight="700" fill="#0c2340">🚛 CARRIER</text>
+    <text x="765" y="103" text-anchor="middle" font-size="12.5" fill="#5b6b7e">Owner-operator</text>
+    <text x="765" y="120" text-anchor="middle" font-size="12.5" fill="#5b6b7e">brings tractor + TWIC</text>
+
+    <line x1="250" y1="90" x2="330" y2="90" stroke="#1d6fd6" stroke-width="3" marker-end="url(#arr)"/>
+    <line x1="565" y1="90" x2="645" y2="90" stroke="#1d6fd6" stroke-width="3" marker-end="url(#arr)"/>
+    <text x="290" y="80" text-anchor="middle" font-size="11" fill="#5b6b7e">pays BASE</text>
+    <text x="605" y="80" text-anchor="middle" font-size="11" fill="#5b6b7e">BASE pays</text>
+  </svg>
+
+  <div class="callout"><b>The one-sentence pitch:</b> "We pull containers out of the Port of Wilmington DE on direct contracts with Dole and Chiquita — we carry the insurance, the chassis pool agreements, and all the port credentials, so a one-truck operator can run port freight without spending $15K and months to get set up."</div>
+
+  <h3>Why this is hard to copy</h3>
+  <p>BASE has spent months and money building things a random broker can't replicate overnight:</p>
+  <ul>
+    <li><b>Direct Dole &amp; Chiquita contracts</b> at the Port of Wilmington — not on any load board.</li>
+    <li><b>$4–5K/month of insurance</b> binders carried to hold those contracts.</li>
+    <li><b>Chassis pool relationships</b>, steamship-line (SSL) accounts, a <b>BMC-84 broker bond</b> and a <b>$50K customs bond</b>, plus an <b>SCAC</b> code and port admin.</li>
+    <li>A physical yard at <b>56 J Caldwell Lane, New Castle DE</b> — minutes from the port.</li>
+  </ul>
+</div></section>
+
+<!-- 2 -->
+<section id="money"><div class="wrap">
+  <h2><span class="num">2</span>How We Make Money</h2>
+  <div class="lead">Margin = what the customer pays us − what we pay the carrier − quick-pay cost.</div>
+
+  <p>Every load has two prices. The <b>customer rate</b> (revenue in) and the <b>carrier rate</b> (cost out). The job of the sales side is to <b>raise revenue</b> (land more/better customers, sell backhaul) while ops keeps the <b>carrier cost</b> down through the rate-bidding campaigns.</p>
+
+  <div class="card">
+  <h3>Worked example — the Everett (Y1) lane</h3>
+  <table>
+    <tr><th>Line</th><th>Amount</th><th>Note</th></tr>
+    <tr><td>Customer pays BASE (revenue)</td><td><b>$X,XXX / load</b></td><td>What the banana customer is billed</td></tr>
+    <tr><td>− Carrier rate (cost)</td><td>$1,400–$1,600</td><td>Floor is <b>$1,400</b>; target ~$1,500; current avg ~$X,XXX</td></tr>
+    <tr><td>− Quick-pay fee</td><td>~11% of carrier rate</td><td>Only if the carrier takes 1-day pay (see §9)</td></tr>
+    <tr><td><b>= BASE gross margin</b></td><td class="yes">~$XXX / load</td><td>This is the number commission is paid on — never revenue</td></tr>
+  </table>
+  </div>
+
+  <div class="kpi">
+    <div class="box"><div class="n">40</div><div class="l">Everett loads / week</div></div>
+    <div class="box"><div class="n">$X,XXX</div><div class="l">Revenue / load</div></div>
+    <div class="box"><div class="n">$1,400</div><div class="l">Carrier floor</div></div>
+    <div class="box"><div class="n">~660 mi</div><div class="l">Round trip</div></div>
+  </div>
+
+  <div class="callout gold"><b>Rep rule #1:</b> You sell on <b>margin</b>, not revenue. A customer win that pays well is great — but never give away the carrier-cost floor to buy the business. The Everett floor is <b>$1,400</b>; nobody quotes below it.</div>
+</div></section>
+
+<!-- 3 -->
+<section id="trip"><div class="wrap">
+  <h2><span class="num">3</span>A Load, Step by Step</h2>
+  <div class="lead">The Everett MA round trip — a single overnight turn. Driver is home the next evening.</div>
+
+  <svg class="flowsvg" viewBox="0 0 900 150" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arr2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#1f9d57"/></marker></defs>
+    <line x1="90" y1="75" x2="810" y2="75" stroke="#cdd9e6" stroke-width="6"/>
+    <circle cx="90" cy="75" r="16" fill="#0c2340"/><text x="90" y="80" text-anchor="middle" fill="#fff" font-size="15">🏭</text>
+    <text x="90" y="115" text-anchor="middle" font-size="12" font-weight="700" fill="#0c2340">Port of</text>
+    <text x="90" y="131" text-anchor="middle" font-size="12" fill="#5b6b7e">Wilmington DE</text>
+
+    <circle cx="450" cy="75" r="16" fill="#1f9d57"/><text x="450" y="80" text-anchor="middle" fill="#fff" font-size="14">🍌</text>
+    <text x="450" y="115" text-anchor="middle" font-size="12" font-weight="700" fill="#0c2340">Everett MA</text>
+    <text x="450" y="131" text-anchor="middle" font-size="12" fill="#5b6b7e">drop &amp; hook by 5 AM</text>
+
+    <circle cx="810" cy="75" r="16" fill="#0c2340"/><text x="810" y="80" text-anchor="middle" fill="#fff" font-size="15">🏭</text>
+    <text x="810" y="115" text-anchor="middle" font-size="12" font-weight="700" fill="#0c2340">Back to Port</text>
+    <text x="810" y="131" text-anchor="middle" font-size="12" fill="#5b6b7e">empty, same PM</text>
+
+    <line x1="110" y1="60" x2="430" y2="60" stroke="#1f9d57" stroke-width="3" marker-end="url(#arr2)"/>
+    <text x="270" y="50" text-anchor="middle" font-size="12" fill="#136b3a">~330 mi loaded (bananas, 40k lbs)</text>
+    <line x1="470" y1="92" x2="790" y2="92" stroke="#9aa9b8" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#arr2)"/>
+    <text x="630" y="112" text-anchor="middle" font-size="12" fill="#5b6b7e">~330 mi empty (deadhead)</text>
+  </svg>
+
+  <div class="steps">
+    <div class="step"><span class="time">Day X · 8 AM–5 PM</span><b>Pickup at the port.</b> Carrier arrives at Port of Wilmington with a tractor and a TWIC card, pays the <b>$32 gate fee</b>, the port supplies the <b>chassis</b>, and they hook a loaded 40' container of bananas (40,000 lbs).</div>
+    <div class="step"><span class="time">overnight</span><b>The line haul north.</b> ~330 miles up I-95 to Everett MA. They must leave DE by ~9 PM to make the morning window.</div>
+    <div class="step"><span class="time">Day X+1 · by 5 AM</span><b>Drop and hook.</b> At the customer (e.g. a Boston-area customer), the driver <b>drops</b> the loaded box and <b>hooks</b> an empty — no waiting around to be unloaded. (Some lanes are <b>live unload</b> instead — see §5.)</div>
+    <div class="step"><span class="time">Day X+1 · PM</span><b>Empty back to the port.</b> The empty container returns to Port of Wilmington the same afternoon. Driver is <b>home that evening.</b></div>
+  </div>
+
+  <div class="callout green"><b>Why carriers love it:</b> single overnight turn, home the next night, steady weekly volume, drop-and-hook (no live-unload waiting), and Wilmington is an <b>easier port than NY/NJ</b> — it doesn't require UIIA registration.</div>
+  <div class="callout"><b>The empty leg is the opportunity.</b> That ~330-mile deadhead back south is 100% wasted today. Filling it with a paying southbound load is the <b>Backhaul Program</b> (§7) — pure profit because the truck is already making the trip.</div>
+</div></section>
+
+<!-- 4 -->
+<section id="provide"><div class="wrap">
+  <h2><span class="num">4</span>BASE Provides vs. Carrier Brings</h2>
+  <div class="lead">Knowing this split cold is how you answer "why would I run with you instead of going direct?"</div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="color:var(--blue)">✅ BASE provides</h3>
+      <table>
+        <tr><td>Direct Dole &amp; Chiquita port contracts</td></tr>
+        <tr><td>$4–5K/mo insurance to hold the contracts</td></tr>
+        <tr><td>Chassis pool relationships (port supplies chassis)</td></tr>
+        <tr><td>BMC-84 broker bond + $50K customs bond</td></tr>
+        <tr><td>All steamship-line (SSL) accounts</td></tr>
+        <tr><td>Port of Wilmington credentials (no UIIA needed)</td></tr>
+        <tr><td>SCAC code + port admin</td></tr>
+        <tr><td>The customer relationship &amp; the freight</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--green)">🚛 Carrier brings</h3>
+      <table>
+        <tr><td>A tractor (the truck — <span class="es">"la troca"</span>)</td></tr>
+        <tr><td>A personal <b>TWIC card</b> (the only credential BASE can't shield)</td></tr>
+        <tr><td>Valid CDL</td></tr>
+        <tr><td>Standard OTR auto liability + cargo insurance</td></tr>
+        <tr><td>The $32 port gate fee per pickup</td></tr>
+      </table>
+      <div class="callout gold" style="margin-top:14px"><b>TWIC</b> = the one gate. It takes 4–8 weeks to get if a carrier doesn't already hold one. "Do you have your TWIC?" is one of the first qualifying questions.</div>
+    </div>
+  </div>
+  <div class="callout green"><b>Carrier's effective savings vs. going solo into drayage:</b> ~$15K of insurance binders in year 1 + months of credentialing. That's the value we're handing them.</div>
+</div></section>
+
+<!-- 5 -->
+<section id="lanes"><div class="wrap">
+  <h2><span class="num">5</span>The Lanes</h2>
+  <div class="lead">A "lane" is a repeating origin→destination route. These are the live ones out of Wilmington.</div>
+  <table>
+    <tr><th>Lane</th><th>Route</th><th>Type</th><th>Rate (carrier)</th><th>Vol/wk</th></tr>
+    <tr><td><b>Everett MA</b> (Y1)</td><td>Port of Wilmington → Everett MA → empty back</td><td>Drop &amp; hook, by 5 AM</td><td>$1,400–$1,600</td><td>40</td></tr>
+    <tr><td><b>Newburgh NY</b></td><td>Port of Wilmington → Newburgh NY</td><td>Live unload, by 6 AM</td><td>~$825</td><td>10</td></tr>
+    <tr><td><b>Ruther Glen VA</b></td><td>Port of Wilmington → Ruther Glen VA</td><td>Live unload, by 8 AM</td><td>$700–$800</td><td>5</td></tr>
+    <tr><td><b>Grand Rapids MI</b></td><td>New Castle DE → Grand Rapids MI</td><td>Next-day 7 AM–1 PM</td><td>varies</td><td>2–3</td></tr>
+    <tr><td><b>New Haven CT</b></td><td>Wilmington → New Haven CT</td><td>—</td><td>varies</td><td>—</td></tr>
+  </table>
+  <div class="callout"><b>Drop &amp; hook vs. live unload —</b> the two ways a load gets delivered:
+    <ul style="margin:8px 0 0">
+      <li><b>Drop &amp; hook:</b> driver drops the loaded box, grabs an empty, leaves immediately. Fast, carriers prefer it.</li>
+      <li><b>Live unload:</b> driver waits while the freight is unloaded off the truck. Slower — if the wait runs long, <b>detention</b> pay can kick in.</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- 6 -->
+<section id="customers"><div class="wrap">
+  <h2><span class="num">6</span>The Customers</h2>
+  <div class="lead">Family-owned banana ripeners and importers across the Northeast — a small, named universe (not a numbers game).</div>
+  <p>Our customers buy full truckloads of Dole/Chiquita bananas out of the Port of Wilmington and ripen them in-house. They're multi-generational, relationship-driven, often voice-first and old-school. There are only a few dozen realistic targets — so the sales game is <b>depth, not volume.</b></p>
+  <div class="callout gold"><b>TAM (Total Addressable Market):</b> the whole pie of customers we could ever serve. Ours is tiny and we know every name. <b>The specific customer list (names, locations, contacts) is confidential — it's in the internal playbook. Ask Amedeo on day one.</b></div>
+</div></section>
+
+<!-- 7 -->
+<section id="backhaul"><div class="wrap">
+  <h2><span class="num">7</span>The Backhaul (the second revenue engine)</h2>
+  <div class="lead">Sell the empty southbound leg. Marginal cost is near zero, so almost any rate is profit.</div>
+  <p>Every week, 40 of our containers deliver to Everett and then run <b>empty</b> all the way back to Wilmington. If we put a paying load in that container for the trip south, it's nearly pure profit.</p>
+  <div class="kpi">
+    <div class="box"><div class="n">40</div><div class="l">Empty boxes / wk</div></div>
+    <div class="box"><div class="n">$400</div><div class="l">Avg target / backhaul</div></div>
+    <div class="box"><div class="n">$832K</div><div class="l">Annual potential</div></div>
+    <div class="box"><div class="n">40k lbs</div><div class="l">Capacity (20 pallets)</div></div>
+  </div>
+  <h3>Ideal backhaul load</h3>
+  <table>
+    <tr><th>Attribute</th><th>Target</th></tr>
+    <tr><td>Pickup</td><td>Within 15 mi of Everett MA</td></tr>
+    <tr><td>Delivery</td><td>Anywhere on I-95 south (NYC, NJ, Philly, DE ideal)</td></tr>
+    <tr><td>Freight</td><td>Palletized, non-hazmat, fits a 40' container</td></tr>
+    <tr><td>Timing</td><td>Pickup 6 AM–12 PM (after our morning delivery)</td></tr>
+  </table>
+  <div class="callout"><b>Broker rule you must respect:</b> BASE is a licensed broker — we can take freight <b>only from direct shippers, not from other brokers.</b> Shippers don't register with FMCSA, so you can't pull a list like we do for carriers — these come from Google Maps, the New England Produce Center, LinkedIn, and walking docks.</div>
+</div></section>
+
+<!-- 8 -->
+<section id="tools"><div class="wrap">
+  <h2><span class="num">8</span>The Tools</h2>
+  <div class="lead">FreightOS is our custom TMS (Transportation Management System) — the load board, CRM, and rate campaigns live here.</div>
+
+  <p>Below is a representation of the <b>load board</b> — the spreadsheet-style view of every active load and where it is.</p>
+  <div class="mock">
+    <div class="bar"><span class="dot"></span> FreightOS — Load Board · app.basecarriers.org</div>
+    <div class="body">
+      <div class="lb-row head"><div>Load #</div><div>Lane</div><div>Carrier</div><div>Rate</div><div>Status</div></div>
+      <div class="lb-row"><div>Y1-1042</div><div>Wilmington → Everett MA</div><div>Trader Trucking Co</div><div>$1,600</div><div><span class="badge b-transit">In transit</span></div></div>
+      <div class="lb-row"><div>Y1-1041</div><div>Wilmington → Everett MA</div><div>Hott Wheelz Transport</div><div>$1,500</div><div><span class="badge b-deliv">Delivered</span></div></div>
+      <div class="lb-row"><div>NB-318</div><div>Wilmington → Newburgh NY</div><div>Division 1 Logistics</div><div>$825</div><div><span class="badge b-book">Booked</span></div></div>
+    </div>
+  </div>
+
+  <p>And the <b>rate campaign</b> — how ops sources cheaper carriers. We email FMCSA-verified owner-operators a lane with a rate range; they reply or fill a bid form. (This is the carrier-side mirror of what you do on the customer side.)</p>
+  <div class="email-mock">
+    <div class="from"><b>From:</b> Amedeo at BASE Carriers &lt;amedeod@basecarriers.com&gt; &nbsp;·&nbsp; <b>Subj:</b> Port of Wilmington DE — Power Only Round Trips</div>
+    Hi [Carrier], got a tractor sitting between loads? We have direct contracts with Dole &amp; Chiquita at the Port of Wilmington DE… Everett MA — drop-and-hook by 5 AM next day — <b>$1,400–$1,600</b> — 40/wk. You bring a tractor with a TWIC card. Got a rate? Text or reply — same-day response. Quick pay: 1-day or 3–5 day options.
+  </div>
+
+  <h3>The wider stack</h3>
+  <table>
+    <tr><th>Tool</th><th>What it's for</th></tr>
+    <tr><td><b>FreightOS</b></td><td>Our TMS — loads, carriers, customers, invoices, tracking (replaces the tools below)</td></tr>
+    <tr><td>RMIS</td><td>Carrier onboarding &amp; compliance docs</td></tr>
+    <tr><td>Masport / Rose Rocket</td><td>Legacy dispatch &amp; order management</td></tr>
+    <tr><td>MacroPoint</td><td>GPS load tracking ("track &amp; trace")</td></tr>
+    <tr><td>Avochato</td><td>Business texting with carriers</td></tr>
+  </table>
+  <div class="callout"><i>The screenshots above are illustrative mock-ups of the FreightOS UI. Ask Amedeo for a live login walkthrough — real screens can be dropped in here.</i></div>
+</div></section>
+
+<!-- 9 -->
+<section id="lingo"><div class="wrap">
+  <h2><span class="num">9</span>Trucking Lingo — Learn These Cold</h2>
+  <div class="lead">If you can't speak the language, carriers and shippers tune you out in the first 10 seconds.</div>
+
+  <h3>The core operational terms</h3>
+  <dl class="glossary">
+    <dt>Drayage</dt><dd>Short-haul trucking of an ocean container to/from a port. Our whole business is port drayage out of Wilmington.</dd>
+    <dt>Power Only</dt><dd>The carrier brings only the <b>tractor</b> (the power unit) — BASE/the port supplies the chassis and the container. Most of our lanes are power-only.</dd>
+    <dt>Tractor vs. Truck</dt><dd>A <b>tractor</b> is the semi cab that pulls a chassis/trailer. A "straight truck" or box truck can't pull a container — which is why we filter carriers for real tractors.</dd>
+    <dt>Chassis</dt><dd>The wheeled steel frame a container sits on so a tractor can pull it. The port supplies it from a <b>chassis pool</b>.</dd>
+    <dt>Container / Box</dt><dd>The 40' ocean container. <b>High cube</b> = 9'6" tall; standard = 8'6". <b>Intermodal</b> = it moves by ship, rail, and truck.</dd>
+    <dt>Drop &amp; Hook</dt><dd>Drop the loaded box, hook an empty, leave. No waiting. Carriers love it.</dd>
+    <dt>Live Unload</dt><dd>Driver waits at the dock while freight is unloaded. Slow — can trigger detention.</dd>
+    <dt>Deadhead</dt><dd>Driving empty with no load (no revenue). <span class="es">"Ir vacío."</span> Our southbound empty leg = deadhead we want to fill.</dd>
+    <dt>Backhaul</dt><dd>A load that fills the return/empty leg. <span class="es">"El regreso."</span></dd>
+    <dt>Line haul</dt><dd>The main long-distance leg of a trip (the rate for the haul itself, before accessorials).</dd>
+    <dt>Lane</dt><dd>A recurring origin→destination route (e.g. "the Everett lane").</dd>
+    <dt>TWIC</dt><dd>Transportation Worker Identification Credential — the federal port-access card. The one thing the driver must hold personally. 4–8 weeks to get.</dd>
+    <dt>Gate fee</dt><dd>What the port charges to enter ($32 at Wilmington, paid by the carrier).</dd>
+    <dt>BOL (Bill of Lading)</dt><dd>The legal document listing the freight — proof of what's on the truck. <span class="es">"El bill."</span></dd>
+    <dt>Rate Con (Rate Confirmation)</dt><dd>The signed sheet confirming the agreed rate &amp; load details before a carrier rolls. <span class="es">"La confirmación."</span></dd>
+    <dt>Detention</dt><dd>Penalty pay when a driver is held past free time at a dock (usually after 2 hrs).</dd>
+    <dt>Demurrage</dt><dd>Port/terminal charge when a container sits past its free days before pickup.</dd>
+    <dt>Per Diem</dt><dd>Daily charge for keeping equipment (chassis/container) too long.</dd>
+    <dt>Lumper</dt><dd>A third-party paid to load/unload freight at a dock.</dd>
+    <dt>Accessorials</dt><dd>Extra charges on top of line haul — detention, gate fee, lumper, etc.</dd>
+    <dt>SSL (Steamship Line)</dt><dd>The ocean carrier that owns the containers (Maersk, MSC, etc.). We hold accounts with them.</dd>
+    <dt>UIIA</dt><dd>Intermodal interchange agreement required at most ports — Wilmington does NOT require it, which is a selling point.</dd>
+    <dt>BMC-84</dt><dd>The $75K surety bond every licensed freight broker must carry. We have it.</dd>
+    <dt>SCAC</dt><dd>Standard Carrier Alpha Code — the unique ID used in port/shipping systems.</dd>
+    <dt>MC# / DOT#</dt><dd>A carrier's federal authority (MC) and safety (DOT) numbers from FMCSA. How we look anyone up. Ours: MC-1299577 / DOT-3707179.</dd>
+    <dt>FMCSA</dt><dd>The federal agency that registers carriers. Its public census is where our carrier prospect lists come from.</dd>
+    <dt>Quick Pay / Factoring</dt><dd>Paying a carrier fast (1-day or 3–5 day) for a small fee instead of standard 30-day terms. Huge for cash-tight owner-operators. <span class="es">"Pago rápido."</span></dd>
+    <dt>Track &amp; Trace</dt><dd>Monitoring a load's GPS location in transit (MacroPoint).</dd>
+    <dt>OTR</dt><dd>Over-the-road — standard long-haul trucking (vs. local/port work).</dd>
+  </dl>
+</div></section>
+
+<!-- 10 -->
+<section id="spanish"><div class="wrap">
+  <h2><span class="num">10</span>Spanish / Spanglish — How Carriers Actually Talk</h2>
+  <div class="lead">A huge share of NJ/NY/PA drayage owner-operators are Spanish-speaking. Even a little goes a long way.</div>
+  <p>Real conversations are <b>50–70% Spanglish</b> — English nouns with Spanish grammar. You don't need to be fluent; you need to recognize key terms and show respect.</p>
+
+  <div class="grid2">
+    <div class="card"><h3>Everyday words</h3>
+      <table>
+        <tr><th>English</th><th>What they say</th></tr>
+        <tr><td>Truck</td><td><span class="es">la troca</span></td></tr>
+        <tr><td>Load</td><td><span class="es">la carga / el load</span></td></tr>
+        <tr><td>Rate</td><td><span class="es">el rate / la tarifa</span></td></tr>
+        <tr><td>Container</td><td><span class="es">el contenedor</span></td></tr>
+        <tr><td>Chassis</td><td><span class="es">el chasis</span></td></tr>
+        <tr><td>Port</td><td><span class="es">el puerto</span></td></tr>
+        <tr><td>Going empty</td><td><span class="es">ir vacío</span></td></tr>
+        <tr><td>Rate con</td><td><span class="es">la confirmación</span></td></tr>
+      </table>
+    </div>
+    <div class="card"><h3>Negotiation phrases</h3>
+      <table>
+        <tr><th>Spanish</th><th>Meaning</th></tr>
+        <tr><td><span class="es">¿Cuánto paga?</span></td><td>What does it pay?</td></tr>
+        <tr><td><span class="es">Eso está muy bajo</span></td><td>That's too low</td></tr>
+        <tr><td><span class="es">¿Puedes subir un poco?</span></td><td>Can you come up a little?</td></tr>
+        <tr><td><span class="es">¿Todo incluido?</span></td><td>All-in? (fuel/tolls included?)</td></tr>
+        <tr><td><span class="es">Sale / Quedamos así</span></td><td>Deal / We'll leave it there</td></tr>
+        <tr><td><span class="es">Mándame la confirmación</span></td><td>Send me the confirmation</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card"><h3>How to address carriers (respect)</h3>
+    <table>
+      <tr><th>Term</th><th>Means</th><th>Use with</th></tr>
+      <tr><td><span class="es">Jefe</span></td><td>Boss</td><td>Universal, always safe</td></tr>
+      <tr><td><span class="es">Don [name]</span></td><td>Mr. [name]</td><td>Older owner-operators, very respectful</td></tr>
+      <tr><td><span class="es">Hermano / Manito</span></td><td>Brother / bro</td><td>Friendly but respectful</td></tr>
+      <tr><td><span class="es">Compa</span></td><td>Buddy</td><td>Once the relationship is built</td></tr>
+    </table>
+    <p style="margin-top:6px"><b>Greetings:</b> <span class="es">"¿Qué lo qué, jefe?"</span> (Dominican, heavy in NJ/NY) · <span class="es">"¿Qué onda?"</span> (Mexican) · <span class="es">"¿Hay chamba?"</span> = "Got work?"</p>
+  </div>
+
+  <div class="callout gold"><b>Cultural rules that win loyalty:</b>
+    <ol style="margin:8px 0 0">
+      <li><b>Relationship first</b> — ask about family before business.</li>
+      <li><b>WhatsApp &amp; voice notes</b> beat email and calls.</li>
+      <li><b>Word is bond</b> — a verbal yes is a commitment, even before the rate con.</li>
+      <li><b>Quick pay wins</b> — cash flow is tight; <span class="es">"pago rápido"</span> is a real selling point.</li>
+      <li><b>Never lowball insultingly</b> — it can damage the relationship permanently.</li>
+      <li><span class="es">"Ahorita"</span> can mean now, soon, or later today — pin down an exact time.</li>
+    </ol>
+  </div>
+</div></section>
+
+<!-- 11 -->
+<section id="fieldrules"><div class="wrap">
+  <h2><span class="num">11</span>How We Actually Operate — Field Rules</h2>
+  <div class="lead">Hard-won rules from the nightly grind. A rep who knows these sounds like an insider, not a salesperson.</div>
+
+  <div class="card">
+    <h3>🛡️ Default to truth</h3>
+    <p>When a load runs late, <b>tell the customer the truth.</b> We only ever "buy time" with a cover story in two narrow cases: the driver is completely AWOL/no-showing, or the load isn't covered yet and we need minutes to book someone. A driver simply running 2 hours late? Just say so with a realistic new ETA. Honesty protects the customer relationship — and the relationship is the whole asset.</p>
+  </div>
+
+  <div class="card">
+    <h3>🚚 Always send the truck — let the customer decide</h3>
+    <p>The instinct on a late load is "maybe they won't take it, let's cancel." <b>Wrong.</b> Always attempt delivery, even late. The accept/reject call belongs to the customer, never to us. Canceling a load we could have delivered is how you lose an account.</p>
+  </div>
+
+  <div class="card">
+    <h3>✉️ Issues go in writing — and the reference number goes in the subject line</h3>
+    <p>For delays, problems, and late notifications, <b>email beats phone.</b> Email creates a record, lets the customer's receiving team plan, and pulls their sales rep into the chain (the rep is what actually moves a problem to a fix). Put the load/pickup reference number right in the subject — e.g. <i>"297508 — not working."</i> Keep the body short.</p>
+  </div>
+
+  <div class="card">
+    <h3>📞 Keep the driver in the loop or he walks</h3>
+    <p>While you work a problem (calling the port, emailing the customer), send the driver steady updates: <i>"Working on it, hold position, port's been contacted."</i> A silent dispatcher is how a driver assumes he's being taken advantage of — and leaves the lot, abandoning the load.</p>
+  </div>
+
+  <div class="card">
+    <h3>🍌 Two customers, two maintenance procedures — never mix them up</h3>
+    <p>If equipment breaks, the <b>very first question is "Chiquita or Dole?"</b> — because routing is completely different and using the wrong one means the repair doesn't get reimbursed:</p>
+    <table>
+      <tr><th>Owner</th><th>Procedure</th></tr>
+      <tr><td><b>Chiquita</b></td><td>Call TTS directly — Chiquita pays the vendor, no out-of-pocket.</td></tr>
+      <tr><td><b>Dole</b></td><td>Email Dole M&amp;R <i>first</i>, get a work-order number, <i>then</i> call the mechanic. We pay out-of-pocket, then invoice Dole.</td></tr>
+    </table>
+    <p>For a roadside breakdown with no listed vendor: find 2–3 mobile truck-repair shops near the driver and hand over phone numbers. Don't punt routine problems upstairs.</p>
+  </div>
+
+  <div class="card">
+    <h3>🔢 A pickup number tells you the customer — if you know the pattern</h3>
+    <p>Every load has a port pickup number, and the format reveals who it belongs to (these patterns roll over, so confirm against a recent email if unsure):</p>
+    <table>
+      <tr><th>Customer</th><th>Pickup-number pattern</th></tr>
+      <tr><td>Dole</td><td>6 digits, starting with 6</td></tr>
+      <tr><td>Chiquita</td><td>6 digits starting with 3, or a random 7-digit number</td></tr>
+      <tr><td>a customer</td><td><code>PVTA-015…</code> prefix</td></tr>
+    </table>
+  </div>
+
+  <div class="callout gold"><b>🚫 Yellow-tag chassis = do not dispatch.</b> A yellow tag means the chassis is out-of-service/unsafe. If a driver shows up with one, swap it — running it gets us penalized by the customer.</div>
+</div></section>
+
+<!-- 12 -->
+<section id="rhythm"><div class="wrap">
+  <h2><span class="num">12</span>The Daily Rhythm &amp; the Core Challenge</h2>
+  <div class="lead">How a day actually runs — and the one bottleneck that shapes everything, including your job.</div>
+
+  <h3>A day in dispatch</h3>
+  <div class="steps">
+    <div class="step"><b>Customer sends the daily pickup list.</b> Dole (and Chiquita) email the day's loads each morning — e.g. <i>"BASE CARRIERS DOLE LOAD PICKUP FOR [DAY]."</i> Some are flagged <b>LTR (Last Truck Remaining)</b> = priority.</div>
+    <div class="step"><b>Ops assigns each load to a carrier</b> and the drivers head to the port to check in.</div>
+    <div class="step"><b>The customer monitors check-ins.</b> If a driver hasn't checked in, they email <i>"THE BELOW HAVE NOT CHECKED IN"</i> — and we respond <b>immediately</b> with status. Fast, honest check-in responses are how we keep Dole/Chiquita happy.</div>
+    <div class="step"><b>Loads run, deliver overnight, empties return.</b> Track &amp; trace the whole way; handle exceptions with the field rules in §11.</div>
+  </div>
+
+  <h3>The core challenge: carrier reliability</h3>
+  <p>The hardest part of this business isn't finding freight — it's having a <b>deep, reliable bench of carriers.</b> A thin bench leads to <b>double-booking</b> (booking two carriers for one load as a hedge), late-night scramble coverage, and owner burnout — and it caps how much we can grow. That's why BASE invests in two things you should understand:</p>
+  <div class="grid2">
+    <div class="card"><h3 style="color:var(--blue)">Expanding the carrier rolodex</h3><p>Structured outbound to FMCSA-registered carriers — the goal is <b>30+ new operable carriers per quarter</b> beyond the load boards. A deeper bench = fewer scrambles = ability to take on more customer volume.</p></div>
+    <div class="card"><h3 style="color:var(--green)">Quick pay &amp; loyalty</h3><p>Paying carriers fast (<span class="es">"pago rápido"</span>) and treating them with respect builds a loyal, dependable bench. <span class="es">"Te cuido, me cuidas"</span> — I look out for you, you look out for me.</p></div>
+  </div>
+
+  <div class="callout"><b>Why this matters to you (sales):</b> when you land a new customer, ops has to be able to <b>cover the loads reliably.</b> Don't oversell capacity we can't deliver — a blown delivery on a brand-new account burns the relationship and our reputation with Dole/Chiquita. Sell growth that ops can actually run.</div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>BASE Carriers Transport LLC</b> · MC-1299577 · DOT-3707179 · BMC-84 Bonded · 56 J Caldwell Lane, New Castle DE</p>
+  <p class="tagline">Internal sales onboarding document. Figures (rates, volumes, customers) are current as of mid-2026 and change — confirm live numbers with Amedeo before quoting. Built from BASE operational records &amp; the carrier/shipper playbooks.</p>
+</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BASE Carriers — The Selling Playbook | Part 2</title>
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+  :root{--navy:#0c2340;--navy2:#143a66;--blue:#1d6fd6;--sky:#e8f1fc;--gold:#f4b41a;
+    --green:#1f9d57;--red:#d64545;--ink:#1a2332;--muted:#5b6b7e;--line:#dbe4ee;--bg:#f6f9fc;--card:#fff;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  header.hero{background:linear-gradient(135deg,#143a66,#1d6fd6);color:#fff;padding:50px 0 56px}
+  .hero h1{font-size:38px;margin:0 0 6px;letter-spacing:-.5px}
+  .hero .tag{font-size:18px;color:#d6e6fa;font-weight:500}
+  .hero .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+  .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 13px;border-radius:30px;font-size:13.5px;font-weight:600}
+  .pill.gold{background:var(--gold);color:#3a2c00;border-color:var(--gold)}
+  nav.toc{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 14px rgba(0,0,0,.18)}
+  nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;padding:8px 22px}
+  nav.toc a{color:#cfe0f5;text-decoration:none;font-size:12.5px;font-weight:600;padding:7px 10px;border-radius:7px}
+  nav.toc a:hover{background:rgba(255,255,255,.12);color:#fff}
+  section{padding:38px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:26px;color:var(--navy);margin:0 0 4px;letter-spacing:-.3px}
+  h2 .num{display:inline-block;background:var(--blue);color:#fff;width:34px;height:34px;border-radius:9px;text-align:center;line-height:34px;font-size:16px;margin-right:11px;vertical-align:middle}
+  .lead{color:var(--muted);font-size:17px;margin:2px 0 20px}
+  h3{font-size:19px;color:var(--navy2);margin:24px 0 8px}
+  p{margin:11px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:15px 0;box-shadow:0 1px 3px rgba(12,35,64,.05)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  th{background:var(--navy);color:#fff;text-align:left;padding:11px 13px;font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+  td{padding:10px 13px;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#fafcfe}
+  .callout{border-left:5px solid var(--blue);background:var(--sky);border-radius:0 12px 12px 0;padding:15px 20px;margin:18px 0}
+  .callout.gold{border-color:var(--gold);background:#fff8e6}
+  .callout.green{border-color:var(--green);background:#eafaf1}
+  .callout.red{border-color:var(--red);background:#fdeeee}
+  .script{background:#0c2340;color:#eaf2fb;border-radius:12px;padding:18px 22px;margin:14px 0;font-size:15px;line-height:1.6}
+  .script .label{color:var(--gold);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:7px}
+  .script em{color:#9bb8da;font-style:italic}
+  .obj{background:#fff;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:0 12px 12px 0;padding:14px 18px;margin:12px 0}
+  .obj .q{font-weight:700;color:var(--red);font-size:15.5px}
+  .obj .a{margin-top:6px}
+  .obj .a:before{content:"↳ ";color:var(--green);font-weight:700}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  .tag-hot{background:#fdeeee;color:#b3261e;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
+  .banned{color:var(--red);font-weight:700}
+  .ok{color:var(--green);font-weight:700}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+  @media(max-width:720px){.kpi{grid-template-columns:1fr 1fr}}
+  .kpi .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;text-align:center}
+  .kpi .n{font-size:24px;font-weight:800;color:var(--blue)}
+  .kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:3px}
+  .crumb{background:#eef4fb;padding:9px 14px;border-radius:9px;font-size:13.5px;margin-bottom:18px}
+  .crumb a{color:var(--blue);font-weight:700;text-decoration:none}
+  footer{padding:28px 0 56px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <h1>The Selling Playbook</h1>
+  <div class="tag">Part 2 — What to say, who to call, how to close</div>
+  <div class="meta">
+    <span class="pill gold">Read Part 1 first</span>
+    <span class="pill">Commission Sales — BASE Carriers</span>
+    <span class="pill">MC-1299577</span>
+  </div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#jobs">1 · Your 2 Jobs</a>
+  <a href="#pitch">2 · The Pitch</a>
+  <a href="#discovery">3 · Discovery</a>
+  <a href="#objections">4 · Objections</a>
+  <a href="#who">5 · Who Decides</a>
+  <a href="#qualify">6 · Qualifying</a>
+  <a href="#cutthrough">7 · Cut Through</a>
+  <a href="#faq">8 · Prospect FAQ</a>
+  <a href="#targets">9 · Target List</a>
+  <a href="#cadence">10 · Cadence</a>
+  <a href="#ramp">11 · 30-60-90</a>
+  <a href="#rules">12 · Rules &amp; Compliance</a>
+  <a href="#produce">13 · Produce Lingo</a>
+</div></nav>
+
+<div class="wrap"><div class="crumb">📘 This is <b>Part 2</b>. It assumes you've read <a href="operations.html">Part 1 — How the Operation Works</a>. There's also a <a href="test.html">self-grading test</a> when you're ready.</div></div>
+
+<!-- 1 -->
+<section id="jobs"><div class="wrap">
+  <h2><span class="num">1</span>Your Two Jobs</h2>
+  <div class="lead">You sell on two fronts. Same company, two completely different pitches. Don't mix them up.</div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="color:var(--blue)">🍌 Job A — Land banana customers</h3>
+      <p><b>Who:</b> family-owned banana ripeners/importers (the ~39-name pipeline).</p>
+      <p><b>What you're selling:</b> reliable, owner-accountable drayage of their Dole/Chiquita containers out of Port of Wilmington.</p>
+      <p><b>Cycle:</b> slow, relationship-driven, high lifetime value (a dedicated lane = recurring revenue for years).</p>
+      <p><b>Style:</b> voice-first, respect-first, become a known face in the produce world. Depth over volume.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--green)">🚛 Job B — Sell backhaul capacity</h3>
+      <p><b>Who:</b> direct shippers along I-95 (Boston → Wilmington).</p>
+      <p><b>What you're selling:</b> our 40 empty southbound containers/week at a discount — pure-profit for us.</p>
+      <p><b>Cycle:</b> faster, more transactional, lower value per deal but higher volume of at-bats.</p>
+      <p><b>Style:</b> high-volume cold calling/emailing. Great training ground — start here.</p>
+    </div>
+  </div>
+  <div class="callout gold"><b>Ramp order:</b> cut your teeth on <b>Job B</b> (fast reps, low stakes, quick commission) while you study the banana dossiers. Earn the <b>Job A</b> Tier-1 accounts once you've proven you won't fumble them.</div>
+</div></section>
+
+<!-- 2 -->
+<section id="pitch"><div class="wrap">
+  <h2><span class="num">2</span>The Pitch &amp; Talk Tracks</h2>
+  <div class="lead">The first 8 seconds are the whole game. Their only job: earn the next 30 seconds of airtime — not to pitch.</div>
+
+  <h3>Cold-call opener — Style A (permission-based, use this first)</h3>
+  <div class="script"><span class="label">Backhaul cold call · opener</span>
+    "Hey, [Name]? … [Name], it's [you] with BASE Carriers in Wilmington. Look — I know I'm calling out of the blue. Can I take 30 seconds and tell you why, and you can tell me to bug off if it's not relevant?"
+  </div>
+  <p>Why it works: naming it as a cold call wins <b>2.1×</b> vs. pretending; giving them an out makes them say "go ahead" 60%+ of the time. Then:</p>
+  <div class="script"><span class="label">The pitch (after "go ahead")</span>
+    "We run 40 containers a week up I-95 between Wilmington and Boston. Our trucks roll back south empty 3–4 days a week regardless. I'd rather give one shipper in [City] a standing discounted slot than run empty — are you shipping anything south out of [City]?"
+  </div>
+
+  <h3>Voicemail + text (always pair them — 4× the callback)</h3>
+  <div class="grid2">
+    <div class="script" style="margin:0"><span class="label">22-sec voicemail</span>
+      "Hey [Name], [you] at BASE Carriers in Wilmington — calling because we run empty containers south on I-95 every week, thought we might save [Company] money on outbound to the Carolinas. I'll text you the rate sheet. Number's [cell], again [cell]. Thanks."
+    </div>
+    <div class="script" style="margin:0"><span class="label">Text within 5 minutes</span>
+      "[Name], just left you a vm — [you] from BASE Carriers. Question on your outbound from [City] heading south. Easier by text? STOP to opt out."
+    </div>
+  </div>
+
+  <h3>Banana-customer opener (Job A — different game)</h3>
+  <p>These are owners of family businesses. Lead with the local/relationship proof, not capacity.</p>
+  <div class="script"><span class="label">Banana customer · warm/cold call</span>
+    "Hi [Name] — [you] with BASE Carriers out of the Port of Wilmington. We pull Dole and Chiquita containers off the port every day — we actually already run for [neighbor/known name]. I'm the kind of outfit where you get the owner on the phone, not a call center. Figured I'd reach out directly — who handles your drayage off the port right now?"
+  </div>
+
+  <h3>The closing ask (the puppy-dog close)</h3>
+  <div class="script"><span class="label">Close — low-commitment trial</span>
+    "Tell you what — give me 2 lanes you ran last week with destinations and rough rates. I'll quote them within 24 hours. If I beat your number, would you run <em>one</em> load with us as a test?"
+  </div>
+  <div class="callout"><b>Voice mechanics beat the script:</b> stand up, smile while dialing, speak ~140 wpm (slower than feels natural), drop your pitch ~10%, and <b>after you ask a question — shut up.</b> The silence makes them talk. Count to 5 if you have to.</div>
+</div></section>
+
+<!-- 3 -->
+<section id="discovery"><div class="wrap">
+  <h2><span class="num">3</span>Discovery — 3 Questions, In Order</h2>
+  <div class="lead">After the opener earns you 30 seconds, don't pitch — ask. Listen more than you talk.</div>
+  <table>
+    <tr><th>#</th><th>Question</th><th>What it tells you</th></tr>
+    <tr><td>1</td><td>"Who handles your outbound freight today — in-house, broker, or asset carrier?"</td><td>Broker-friendly = good fit. "Own trucks" = harder. "A couple brokers" = wide open.</td></tr>
+    <tr><td>2</td><td>"What's a typical week look like out of [City] going south — loads and destinations?"</td><td>Is there freight to fight for at all? "Mostly inbound here" = polite exit.</td></tr>
+    <tr><td>3</td><td>"Roughly what are you paying per load on those lanes today?"</td><td>~60% deflect — ask anyway. A number = a benchmark you can beat by 30–40%.</td></tr>
+  </table>
+  <div class="callout green"><b>Buying signals (lean in):</b> they give specific lanes, volunteer rate complaints, mention carrier problems, or ask about insurance/onboarding/payment. <br><b>Weak signals (exit politely):</b> "we're all set," one-word answers, "just send me an email" with no engagement.</div>
+</div></section>
+
+<!-- 4 -->
+<section id="objections"><div class="wrap">
+  <h2><span class="num">4</span>Objection Handling — The 6 You'll Hear Daily</h2>
+  <div class="lead">An objection is information, not rejection. Most are reflexes — answer calmly and keep going.</div>
+
+  <div class="obj"><div class="q">"We already have a carrier / we're all set."</div>
+    <div class="a">"Totally expected — I'm not asking you to fire anyone. I'm asking to be the truck that's already going your direction when your guy is tight. Give me one lane to quote; if I don't beat it, you've lost nothing."</div></div>
+
+  <div class="obj"><div class="q">"We run our own trucks."</div>
+    <div class="a">"Smart — then you know the pain of empty miles. We're not trying to replace your fleet, just fill the southbound lane your trucks don't run. When your own equipment is committed, we're the overflow."</div></div>
+
+  <div class="obj"><div class="q">"You're just another broker."</div>
+    <div class="a">"Fair — and most brokers will post your load to whoever's cheapest on DAT. We're not that. We run a fixed Wilmington↔Boston corridor, our own chassis relationships, TWIC drivers, 90%+ repeat lanes. You're getting a scheduled truck, not a load board."</div></div>
+
+  <div class="obj"><div class="q">"Just send me an email." (the brush-off)</div>
+    <div class="a">"Happy to — what's the best address? And so it's not just another email in the pile: is there one southbound lane I should quote in it? … Great, I'll have it to you today and follow up Thursday." <em>(Pin a specific next step or it dies.)</em></div></div>
+
+  <div class="obj"><div class="q">"Your rate's too high."</div>
+    <div class="a">"What number are you working against? … I'd rather know than guess. Our truck's already making that trip, so I've got room a van carrier doesn't — let me sharpen the pencil on that exact lane." <em>(Never drop below the floor without Amedeo.)</em></div></div>
+
+  <div class="obj"><div class="q">"We've been burned by brokers before."</div>
+    <div class="a">"I get it — that's exactly why you'll have my cell, not a 1-800 number. I dispatch, I bill, I make the rate call. If something goes sideways at 2 AM, you're talking to the owner, not a claims department."</div></div>
+
+  <div class="callout gold"><b>The owner-accountability card is unbeatable.</b> No large 3PL and almost no other small broker can say "you'll talk to me, the owner — yes or no in five minutes, not next week." Play it often.</div>
+</div></section>
+
+<!-- 5 -->
+<section id="who"><div class="wrap">
+  <h2><span class="num">5</span>Who Actually Decides</h2>
+  <div class="lead">Pitch the wrong person and you waste weeks. Titles lie in mid-market freight.</div>
+  <table>
+    <tr><th>Setting</th><th>Who really tenders the load</th><th>How to play it</th></tr>
+    <tr><td>Family banana house (Job A)</td><td><b>The owner / family member</b> — they decide everything, often by feel and relationship</td><td>Go straight to the top. Voice-first, respect-first, relationship before rate.</td></tr>
+    <tr><td>Small shipper (50–150 ppl)</td><td>The "Logistics Manager" — functionally a <b>dispatcher with a desk</b>; can say yes to a spot load fast</td><td>This is your sweet spot — real authority, short cycle.</td></tr>
+    <tr><td>Bigger shipper (400+)</td><td>"VP Supply Chain" may have never tendered a load; the <b>traffic coordinator</b> does the real work</td><td>Find the doer, not the title. Long cycle — qualify hard before investing.</td></tr>
+  </table>
+</div></section>
+
+<!-- 6 -->
+<section id="qualify"><div class="wrap">
+  <h2><span class="num">6</span>Qualifying Scorecard</h2>
+  <div class="lead">Your job is to <b>filter</b>, not to convince. Find the fit fast and stop wasting time on the rest.</div>
+  <table>
+    <tr><th>Ask / check</th><th>Good answer</th></tr>
+    <tr><td>Do they import direct or buy from a distributor? (Job A)</td><td><b>Direct importer</b> = they own port freight = real fit</td></tr>
+    <tr><td>Volume — loads/week?</td><td>Steady weekly volume worth a dedicated truck</td></tr>
+    <tr><td>Do they ship south out of the Northeast? (Job B)</td><td>Regular southbound, palletized, fits a 40' box</td></tr>
+    <tr><td>Distance from the lane?</td><td>Pickup within ~15 mi of Everett (backhaul) / Northeast metro (customer)</td></tr>
+    <tr><td>Own fleet or use carriers?</td><td>Uses brokers/carriers = warmer; own-fleet = overflow play only</td></tr>
+    <tr><td>Who decides — are you talking to them?</td><td>You're on the phone with the actual decision-maker</td></tr>
+  </table>
+  <div class="callout red"><b>Disqualify fast and move on</b> if: no southbound/port freight, freight won't fit a 40' container, it's hazmat, or they only buy from a distributor (no direct port volume). A "no" is information — log it and dial the next one.</div>
+</div></section>
+
+<!-- 7 -->
+<section id="cutthrough"><div class="wrap">
+  <h2><span class="num">7</span>Cutting Through the Broker Noise</h2>
+  <div class="lead">Mid-market shippers get 40–70 broker emails a week and 78% never engage. You must NOT sound like a broker.</div>
+
+  <h3>Sound like an asset carrier, not a broker</h3>
+  <p>BASE's reality (40 boxes/week, fixed corridor, owned chassis relationships, TWIC drivers, 90%+ repeat) is structurally a small dedicated carrier. Talk like one:</p>
+  <div class="grid2">
+    <div class="card"><h3 style="color:var(--green)">✅ Asset-carrier voice</h3>
+      <ul>
+        <li>Volume in <b>units</b>: "40 containers/week," "173 last month"</li>
+        <li><b>Named geography</b>: "Conley Terminal Boston," "Port of Wilmington"</li>
+        <li><b>Schedule</b>, not availability: "Tuesdays &amp; Thursdays"</li>
+        <li>"Our trucks roll regardless"</li>
+        <li>"You'll talk to me — the owner"</li>
+      </ul>
+    </div>
+    <div class="card"><h3 style="color:var(--red)">❌ Broker noise (sounds like everyone)</h3>
+      <ul>
+        <li>"We have <span class="banned">capacity</span> available in your <span class="banned">lanes</span>"</li>
+        <li>"50,000+ vetted carrier <span class="banned">network</span>"</li>
+        <li>"Competitive rates, 24/7 tracking"</li>
+        <li>"Just <span class="banned">following up</span> / bumping this up"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout red"><b>Banned subject-line words</b> (auto-archived by shippers): <span class="banned">capacity · lanes · partner · backhaul · broker · freight · follow-up</span>.<br>
+  <b>Use instead:</b> <span class="ok">scheduled · southbound · empty · [City]-to-[City] · slot · every Tuesday</span>.</div>
+
+  <div class="callout"><b>Don't say "backhaul" to a shipper</b> — it signals "one-time, flaky." Say <b>"scheduled southbound capacity,"</b> a <b>"standing slot,"</b> or a <b>"continuous-move discount."</b></div>
+</div></section>
+
+<!-- 8 -->
+<section id="faq"><div class="wrap">
+  <h2><span class="num">8</span>Prospect FAQ — What They Ask Back</h2>
+  <div class="lead">Know these cold. Fumbling a basic question kills credibility.</div>
+  <table>
+    <tr><th>They ask…</th><th>You say…</th></tr>
+    <tr><td>"Are you insured?"</td><td>Yes — auto liability + cargo above broker minimums; BMC-84 bonded. I'll send the COI.</td></tr>
+    <tr><td>"What if a load is late or damaged?"</td><td>You call me — the owner — directly. No claims department, no runaround. We make it right.</td></tr>
+    <tr><td>"What are your payment terms?"</td><td>Standard net terms; we can talk a flat weekly invoice with no surprise accessorials on a standing lane.</td></tr>
+    <tr><td>"Can you scale if we grow?"</td><td>We run 40+ boxes/week on a fixed corridor and are adding carriers every quarter — yes, with notice.</td></tr>
+    <tr><td>"Do you have references?"</td><td>We're the drayage partner for family banana houses across the Northeast — happy to connect you once we've run a load or two.</td></tr>
+    <tr><td>"What's your equipment?"</td><td>40' intermodal containers on chassis, power-only, TWIC-cleared drivers out of Wilmington.</td></tr>
+  </table>
+</div></section>
+
+<!-- 9 -->
+<section id="targets"><div class="wrap">
+  <h2><span class="num">9</span>Your Target List</h2>
+  <div class="lead">The banana-customer universe is a small, named set of family companies — that's your hit list.</div>
+  <div class="callout gold"><b>The live target list — existing customers, hot prospects, contacts, and tiers — is confidential and lives in the internal playbook.</b> Ask Amedeo for it on day one. Your job: work those named relationships with depth, leveraging warm intros and the produce-community network (PDA, the wholesale markets).</div>
+</div></section>
+
+<!-- 10 -->
+<section id="cadence"><div class="wrap">
+  <h2><span class="num">10</span>The Cadence — Activity Drives Everything</h2>
+  <div class="lead">You can't control who books; you control inputs. Stack enough inputs and the math works.</div>
+
+  <h3>When to call (Eastern)</h3>
+  <p><b>Tue / Wed / Thu only.</b> Morning block <b>7:30–9:00</b> (peak), afternoon <b>3:30–5:00</b>. Skip Mon/Fri — worse connect rates. Two 90-min blocks/day max (output drops past 3 hrs).</p>
+
+  <div class="kpi">
+    <div class="box"><div class="n">~30</div><div class="l">Dials / block</div></div>
+    <div class="box"><div class="n">3–5</div><div class="l">Real convos / block</div></div>
+    <div class="box"><div class="n">~200</div><div class="l">Dials / week</div></div>
+    <div class="box"><div class="n">2–4</div><div class="l">First-load shots / wk</div></div>
+  </div>
+
+  <h3>The multichannel sequence (3× better than calls alone)</h3>
+  <p>Your name should hit each prospect ~8 times in 14 days across email, call, and text. Most brokers quit at touch 2 — <b>60% of replies come from touches 3–7.</b></p>
+  <table>
+    <tr><th>Day</th><th>Action</th></tr>
+    <tr><td>1</td><td>Email touch 1</td></tr>
+    <tr><td>2</td><td>Call → VM → text within 5 min</td></tr>
+    <tr><td>5</td><td>Email touch 2 (bump)</td></tr>
+    <tr><td>7</td><td>Call → VM → text (different time of day)</td></tr>
+    <tr><td>9</td><td>Text referencing prior emails</td></tr>
+    <tr><td>12</td><td>Email touch 3 (lane sample)</td></tr>
+    <tr><td>14</td><td>Email + text breakup</td></tr>
+  </table>
+  <div class="callout green"><b>Record yourself once a week and listen back.</b> Single highest-leverage thing you can do — you'll hear the "umms," the rushed open, where you lost them. After 20 calls reviewed you're in the top 10% of freight cold-callers. The bar is low.</div>
+</div></section>
+
+<!-- 11 -->
+<section id="ramp"><div class="wrap">
+  <h2><span class="num">11</span>Your First 90 Days</h2>
+  <div class="lead">Weeks 2–4 are the dropout zone — no loads yet, rejection compounding. First loads land weeks 5–8. Push through.</div>
+  <table>
+    <tr><th>Window</th><th>Focus</th><th>What "on track" looks like</th></tr>
+    <tr><td><b>Week 1</b></td><td>Learn the product (Part 1), shadow Amedeo, internalize the openers, set up CRM/phone/email</td><td>Can explain the broker model, the Everett lane, and the floor without notes</td></tr>
+    <tr><td><b>Weeks 2–4</b></td><td>Backhaul cold calling (Job B) — full cadence. Work the overdue touch-plan in parallel</td><td>~200 dials/wk, 20–30 convos/wk, several "send me 2 lanes" yeses</td></tr>
+    <tr><td><b>Month 2</b></td><td>First backhaul loads + start Tier 2 banana prospects</td><td>First loads booked; a few banana conversations advancing</td></tr>
+    <tr><td><b>Month 3</b></td><td>Earn Tier 1 banana accounts (a top prospect, a prospect)</td><td>Repeat backhaul business + 1–2 real banana opportunities in play</td></tr>
+  </table>
+  <div class="callout gold"><b>The one thing that separates winners from quitters:</b> showing up tomorrow. It's a volume game with high variance — stack the inputs 6 blocks/week for 12 weeks and the math works.</div>
+</div></section>
+
+<!-- 12 -->
+<section id="rules"><div class="wrap">
+  <h2><span class="num">12</span>Guardrails &amp; Compliance — Non-Negotiable</h2>
+  <div class="lead">Commission reps optimize for their own check. These rules protect the company and you.</div>
+  <table>
+    <tr><th>Rule</th><th>Why</th></tr>
+    <tr><td><b>Never quote below the floor without Amedeo.</b> Everett floor = $1,400.</td><td>You sell on margin, not revenue. Buying business with our margin loses money.</td></tr>
+    <tr><td><b>We only take freight from DIRECT shippers, never other brokers.</b></td><td>BASE is a licensed broker — taking broker freight is double-brokering. Hard no.</td></tr>
+    <tr><td><b>Don't promise capacity ops can't cover.</b></td><td>A blown delivery on a new account burns the relationship + our Dole/Chiquita reputation.</td></tr>
+    <tr><td><b>Amedeo approves new-customer credit before you commit.</b></td><td>Getting stuck with a non-paying customer is worse than no customer.</td></tr>
+    <tr><td><b>Log every touch in the CRM.</b></td><td>If it's not logged, it didn't happen — and you can't improve what you don't track.</td></tr>
+  </table>
+  <h3>Outreach law (don't create legal exposure)</h3>
+  <div class="grid2">
+    <div class="card"><h3 style="color:var(--blue)">📧 Email — CAN-SPAM</h3><ul>
+      <li>Real "from" name + BASE physical address in the footer</li>
+      <li>A working unsubscribe / opt-out</li>
+      <li>No deceptive subject lines</li>
+    </ul></div>
+    <div class="card"><h3 style="color:var(--green)">📱 Text — TCPA</h3><ul>
+      <li>B2B cold text is governed by TCPA — include <b>"STOP to opt out"</b></li>
+      <li>Honor opt-outs immediately</li>
+      <li>Business hours; use the BASE A2P-registered number</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<!-- 13 -->
+<section id="produce"><div class="wrap">
+  <h2><span class="num">13</span>Speak Your Customer's Language — Produce 101</h2>
+  <div class="lead">Your banana customers speak "produce," not "trucking." Knowing these earns instant credibility with old-school family owners.</div>
+  <table>
+    <tr><th>Term</th><th>Means</th></tr>
+    <tr><td><b>Ripening room</b></td><td>Climate-controlled room where green bananas are gassed (ethylene) to ripen on schedule. The heart of a banana house.</td></tr>
+    <tr><td><b>Green / turning / ripe</b></td><td>Ripening stages (1–7). Customers order by the stage they need on arrival.</td></tr>
+    <tr><td><b>Cases vs. pallets</b></td><td>Bananas ship in ~40-lb cases; a 40' container ≈ 20 pallets of cases.</td></tr>
+    <tr><td><b>High cube</b></td><td>A 9'6"-tall container (vs. 8'6" standard) — fits more.</td></tr>
+    <tr><td><b>Reefer</b></td><td>Refrigerated container — bananas move temperature-controlled.</td></tr>
+    <tr><td><b>Importer of record</b></td><td>The company that brings the fruit through customs — that's who owns the port freight (your real customer).</td></tr>
+    <tr><td><b>PDA / PMA</b></td><td>Produce industry associations (Eastern PA Produce, Produce Marketing Assn). Where the family-business owners network — a credibility door-opener.</td></tr>
+    <tr><td><b>Hunts Point</b></td><td>The Bronx terminal market — the biggest produce hub in the country; several targets operate there.</td></tr>
+    <tr><td><b>Terminal market</b></td><td>The big-city wholesale produce markets (Hunts Point, Philadelphia, Maryland) where distributors cluster.</td></tr>
+    <tr><td><b>One-touch / cross-dock</b></td><td>Moving fruit through a facility without long storage — speed matters because fruit is perishable.</td></tr>
+  </table>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>BASE Carriers Transport LLC</b> · MC-1299577 · DOT-3707179 · Part 2 of 2 — pair with <a href="operations.html">Part 1</a> and the <a href="test.html">test</a>.</p>
+  <p>Distilled from BASE's cold-call coaching, buyer-psychology, competitive cut-through, email/text playbooks, and the banana sales pipeline. Scripts are starting points — make them your own. Rates/targets change; confirm live numbers with Amedeo.</p>
+</div></footer>
+
+</body>
+</html>

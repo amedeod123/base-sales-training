@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BASE Carriers — Onboarding Test</title>
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+  :root{--navy:#0c2340;--blue:#1d6fd6;--green:#1f9d57;--red:#d64545;--gold:#f4b41a;
+    --ink:#1a2332;--muted:#5b6b7e;--line:#dbe4ee;--bg:#f6f9fc;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(135deg,#0c2340,#1d6fd6);color:#fff;padding:42px 0 46px}
+  header h1{margin:0 0 6px;font-size:32px}
+  header p{margin:0;color:#d6e6fa;font-size:16px}
+  .meta{margin-top:16px;font-size:14px;color:#bcd4f0}
+  .intro{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:26px 0}
+  .intro b{color:var(--navy)}
+  .q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
+  .q .qn{font-weight:700;color:var(--navy);font-size:16.5px;margin-bottom:4px}
+  .q .sec{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);font-weight:700}
+  .opt{display:block;padding:10px 14px;border:1.5px solid var(--line);border-radius:9px;margin:8px 0;cursor:pointer;font-size:15px;transition:.12s}
+  .opt:hover{border-color:var(--blue);background:#f3f8fe}
+  .opt input{margin-right:10px}
+  .opt.correct{border-color:var(--green);background:#eafaf1}
+  .opt.wrong{border-color:var(--red);background:#fdeeee}
+  .explain{margin-top:10px;font-size:13.5px;padding:10px 14px;border-radius:8px;background:#eef4fb;color:#33414f;display:none}
+  .explain.show{display:block}
+  .explain b{color:var(--navy)}
+  .bar{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--line);padding:14px 0;margin-top:24px;box-shadow:0 -4px 16px rgba(12,35,64,.08)}
+  .bar .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  button{font-size:15px;font-weight:700;padding:11px 22px;border-radius:9px;border:none;cursor:pointer}
+  .grade{background:var(--blue);color:#fff}
+  .grade:hover{background:#1559ad}
+  .reset{background:#e6edf5;color:var(--navy)}
+  #score{font-size:17px;font-weight:800}
+  .pass{color:var(--green)}.fail{color:var(--red)}
+  .scorebox{background:#fff;border:2px solid var(--line);border-radius:12px;padding:20px;margin:18px 0;text-align:center;display:none}
+  .scorebox.show{display:block}
+  .scorebox .big{font-size:46px;font-weight:800}
+  footer{padding:24px 0 60px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>BASE Carriers — Onboarding Test</h1>
+  <p>Prove you've got the operation, the lingo, and the playbook down.</p>
+  <div class="meta">24 questions · pass mark 80% (20/24) · open-book (use Parts 1 &amp; 2)</div>
+</div></header>
+
+<div class="wrap">
+  <div class="intro"><b>How it works:</b> pick one answer per question, then hit <b>Grade my test</b> at the bottom. You'll get a score and see the right answer + a one-line explanation on any you missed. Retake until you pass 80%.</div>
+
+  <div id="quiz"></div>
+
+  <div class="scorebox" id="scorebox"><div class="big" id="bigscore"></div><div id="verdict"></div></div>
+</div>
+
+<div class="bar"><div class="wrap">
+  <button class="grade" onclick="grade()">✅ Grade my test</button>
+  <button class="reset" onclick="resetTest()">↺ Reset</button>
+  <span id="score"></span>
+</div></div>
+
+<footer><div class="wrap">BASE Carriers Transport LLC · MC-1299577 · Internal training assessment. Answers reflect current ops &amp; playbook — confirm live numbers with Amedeo.</div></footer>
+
+<script>
+const QUESTIONS = [
+ {s:"The Business", q:"What is BASE Carriers, fundamentally?",
+  o:["A banana ripener that also ships","A licensed freight broker that holds port contracts and dispatches owner-operators","A trucking company that owns its own fleet of tractors","A steamship line"], a:1,
+  e:"BASE is a broker in the middle: it holds the customer relationships + port credentials on one side and dispatches owner-operator carriers on the other."},
+
+ {s:"The Money", q:"How does BASE make its money on a load?",
+  o:["A flat fee per mile set by the port","The margin: what the customer pays us minus what we pay the carrier (minus quick-pay)","A percentage of the bananas sold","Government subsidy for port work"], a:1,
+  e:"Margin = customer rate − carrier rate − quick-pay cost. You always sell on margin, never revenue."},
+
+ {s:"The Money", q:"What is the carrier rate FLOOR on the Everett lane?",
+  o:["$800","$1,100","$1,400","$X,XXX"], a:2,
+  e:"$1,400 is the floor — nobody quotes below it without Amedeo. (~$1,500 target, ~$X,XXX current avg.)"},
+
+ {s:"Operations", q:"\"Power only\" means the carrier brings…",
+  o:["The tractor only — the port supplies the chassis and container","The whole rig including a reefer trailer","Only a driver, no truck","Their own fuel and that's it"], a:0,
+  e:"Power-only = carrier brings the tractor (power unit); the port/BASE supplies the chassis and container."},
+
+ {s:"Operations", q:"Which credential must the driver hold PERSONALLY (the one BASE can't shield)?",
+  o:["A passport","A TWIC card","An SCAC code","A BMC-84 bond"], a:1,
+  e:"TWIC = the federal port-access card. Takes 4–8 weeks to get. It's the one gate the carrier owns."},
+
+ {s:"Operations", q:"\"Drop and hook\" means:",
+  o:["Wait at the dock while they unload the truck","Drop the loaded box, hook an empty, and leave immediately","Drop the trailer and go home for the day","Hook two trailers together"], a:1,
+  e:"Drop & hook = no waiting. Live unload = the driver waits while freight comes off (can trigger detention)."},
+
+ {s:"Lingo", q:"A truck driving EMPTY with no revenue load is called:",
+  o:["Drayage","Deadhead","Demurrage","Detention"], a:1,
+  e:"Deadhead = running empty. Our southbound empty leg is the deadhead the Backhaul Program fills."},
+
+ {s:"Lingo", q:"\"Drayage\" is:",
+  o:["Long-haul cross-country trucking","Short-haul trucking of an ocean container to/from a port","Loading freight by hand","Storing containers at a warehouse"], a:1,
+  e:"Drayage = short-haul port container moves. It's BASE's whole core business out of Wilmington."},
+
+ {s:"Lingo", q:"The signed sheet confirming the agreed rate & load details before a carrier rolls is the:",
+  o:["BOL","Rate con (rate confirmation)","Lumper receipt","Manifest"], a:1,
+  e:"Rate con = rate confirmation. The BOL (Bill of Lading) is the legal doc listing the freight itself."},
+
+ {s:"Lingo", q:"\"Detention\" refers to:",
+  o:["A port fee for a container sitting too long","Pay owed when a driver is held past free time at a dock","A penalty for a late delivery","Holding a driver's license"], a:1,
+  e:"Detention = the driver waiting too long at a dock. Demurrage = the container sitting at the port past free days."},
+
+ {s:"Field Rules", q:"A driver is running 2 hours late to a delivery. What do you tell the customer?",
+  o:["Make up a mechanical issue to cover it","The truth — give a realistic new ETA","Nothing; just hope they don't notice","Blame the shipper for a slow pickup"], a:1,
+  e:"Default to truth. We only ever buy time with a story if the driver is fully AWOL or the load isn't covered yet."},
+
+ {s:"Field Rules", q:"A load will be late. The right move is:",
+  o:["Cancel it — they probably won't accept it late","Always send the truck and let the customer make the accept/reject call","Hold the truck until tomorrow","Ask the carrier to skip it"], a:1,
+  e:"Always attempt delivery, even late. The accept/reject decision belongs to the customer, never us."},
+
+ {s:"Field Rules", q:"Equipment breaks down. What's the FIRST question you ask?",
+  o:["What's the driver's name?","Chiquita or Dole?","How old is the truck?","Is it raining?"], a:1,
+  e:"Chiquita vs Dole = totally different repair routing. Wrong procedure = no reimbursement."},
+
+ {s:"Field Rules", q:"A driver shows up with a yellow-tag chassis. You:",
+  o:["Dispatch it — a tag is just paperwork","Do not dispatch it; swap to a safe chassis","Dispatch but tell the driver to hurry","Send it and note it for later"], a:1,
+  e:"Yellow tag = out-of-service/unsafe. Running it gets BASE penalized by the customer. Swap it."},
+
+ {s:"Field Rules", q:"How should delays and problems be communicated to customers like a customer?",
+  o:["By phone call only","In writing (email) with the reference number in the subject line","By text to the driver","Not at all unless they ask"], a:1,
+  e:"Email creates a record, lets receiving plan, and pulls in their sales rep. Reference # goes in the subject."},
+
+ {s:"Selling", q:"What is the ONLY job of the first 8 seconds of a cold call?",
+  o:["Close the deal","Earn the next 30 seconds of airtime","Get their email address","Recite BASE's full company history"], a:1,
+  e:"If you get 30 seconds of airtime you usually get the meeting. The opener buys airtime — it doesn't pitch."},
+
+ {s:"Selling", q:"Which word should you AVOID in a cold email subject line to a shipper?",
+  o:["Scheduled","Southbound","Capacity","Tuesday"], a:2,
+  e:"Banned: capacity, lanes, partner, backhaul, broker, freight, follow-up — shippers auto-archive them. Use 'scheduled,' 'southbound,' 'slot.'"},
+
+ {s:"Selling", q:"A shipper says \"we already have a carrier.\" Best response?",
+  o:["\"Okay, sorry to bother you\" and hang up","\"I'm not asking you to fire anyone — be the truck already going your way; give me one lane to quote\"","\"Your carrier is probably ripping you off\"","\"Call me when they let you down\""], a:1,
+  e:"Reframe as overflow/backup, lower the ask to one lane to quote. An objection is information, not a no."},
+
+ {s:"Selling", q:"At a family-owned banana business, who actually decides?",
+  o:["The VP of Supply Chain","The owner / family member","A procurement committee","The night dispatcher"], a:1,
+  e:"Family houses decide at the top, by relationship and feel. Go straight to the owner, voice-first."},
+
+ {s:"Selling", q:"BASE can take freight from:",
+  o:["Any other broker who offers it","Direct shippers only — never other brokers","Only the steamship lines","Anyone, as long as the rate is good"], a:1,
+  e:"Taking another broker's freight is double-brokering — a hard no. Direct shippers only."},
+
+ {s:"Selling", q:"What's the single differentiator no big 3PL or other small broker can copy?",
+  o:["The lowest rate in the market","Owner-level accountability — you talk to the owner, yes/no in five minutes","A 50,000-carrier network","24/7 tracking technology"], a:1,
+  e:"\"You'll talk to me, the owner — I dispatch, I bill, I decide.\" Unfakeable by layered 3PLs."},
+
+ {s:"Selling", q:"Right after you ask a discovery question, you should:",
+  o:["Immediately ask two more questions","Stay silent and let them fill the space","Answer it yourself","Pitch the rate"], a:1,
+  e:"Silence makes the prospect talk and reveal something useful. Count to 5 if you have to."},
+
+ {s:"Selling", q:"When are the best days/times to cold call (Eastern)?",
+  o:["Monday & Friday, midday","Tue/Wed/Thu, 7:30–9 AM and 3:30–5 PM","Weekends","Any time after 6 PM"], a:1,
+  e:"Tue/Wed/Thu peak windows. Skip Mon/Fri (worse connect rates). Two 90-min blocks/day max."},
+
+ {s:"Selling", q:"On a banana-customer cold call, the right first move is to:",
+  o:["Open with your lowest rate","Lead with local/relationship proof, then ask who handles their drayage","Email a long company brochure","Pitch a 12-month contract immediately"], a:1,
+  e:"Family banana houses are relationship-first — lead with proof you already serve their world, then ask who handles their port drayage."}
+];
+
+const quiz = document.getElementById('quiz');
+QUESTIONS.forEach((item, i) => {
+  const div = document.createElement('div');
+  div.className = 'q'; div.id = 'q'+i;
+  let opts = item.o.map((opt, j) =>
+    `<label class="opt" id="q${i}o${j}"><input type="radio" name="q${i}" value="${j}">${opt}</label>`).join('');
+  div.innerHTML = `<div class="sec">${item.s}</div><div class="qn">${i+1}. ${item.q}</div>${opts}
+    <div class="explain" id="e${i}"></div>`;
+  quiz.appendChild(div);
+});
+
+function grade(){
+  let correct = 0, answered = 0;
+  QUESTIONS.forEach((item, i) => {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    // clear prior styling
+    item.o.forEach((_, j) => document.getElementById(`q${i}o${j}`).classList.remove('correct','wrong'));
+    const exp = document.getElementById('e'+i);
+    if(sel){
+      answered++;
+      const val = parseInt(sel.value);
+      if(val === item.a){ correct++; document.getElementById(`q${i}o${val}`).classList.add('correct'); }
+      else{
+        document.getElementById(`q${i}o${val}`).classList.add('wrong');
+        document.getElementById(`q${i}o${item.a}`).classList.add('correct');
+      }
+    } else {
+      document.getElementById(`q${i}o${item.a}`).classList.add('correct');
+    }
+    exp.innerHTML = `<b>Correct:</b> ${item.o[item.a]}<br>${item.e}`;
+    exp.classList.add('show');
+  });
+  const pct = Math.round(correct/QUESTIONS.length*100);
+  const pass = pct >= 80;
+  const sb = document.getElementById('scorebox');
+  sb.classList.add('show');
+  document.getElementById('bigscore').innerHTML = `${correct}/${QUESTIONS.length} <span style="font-size:24px">(${pct}%)</span>`;
+  document.getElementById('bigscore').className = 'big ' + (pass?'pass':'fail');
+  document.getElementById('verdict').innerHTML = pass
+    ? '✅ <b class="pass">PASS</b> — you know the operation. Go sell.'
+    : '❌ <b class="fail">Not yet (need 80%)</b> — review the highlighted answers and retake.';
+  document.getElementById('score').innerHTML = `Score: <span class="${pass?'pass':'fail'}">${correct}/${QUESTIONS.length} (${pct}%)</span>`;
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
+function resetTest(){
+  QUESTIONS.forEach((item, i) => {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`); if(sel) sel.checked = false;
+    item.o.forEach((_, j) => document.getElementById(`q${i}o${j}`).classList.remove('correct','wrong'));
+    document.getElementById('e'+i).classList.remove('show');
+  });
+  document.getElementById('scorebox').classList.remove('show');
+  document.getElementById('score').innerHTML = '';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

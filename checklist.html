@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your First 90 Days — BASE Carriers</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{--navy:#0c2340;--blue:#1d6fd6;--gold:#f4b41a;--green:#1f9d57;--ink:#1a2332;--muted:#5b6b7e;--line:#dbe4ee;--bg:#f6f9fc;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(135deg,#0c2340,#1d6fd6);color:#fff;padding:42px 0 46px}
+  header h1{margin:0 0 6px;font-size:32px}header p{margin:0;color:#cfe0f5}
+  .home{display:inline-block;margin:16px 0 0;color:#fff;text-decoration:none;font-weight:700;font-size:14px;opacity:.85}
+  .progwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:24px 0;position:sticky;top:10px;z-index:5;box-shadow:0 2px 10px rgba(12,35,64,.06)}
+  .bar{height:14px;background:#eef4fb;border-radius:10px;overflow:hidden;margin-top:8px}
+  .bar > div{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0;transition:width .3s}
+  .phase{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0}
+  .phase h2{margin:0 0 2px;font-size:20px;color:var(--navy)}
+  .phase .sub{color:var(--muted);font-size:14px;margin:0 0 12px}
+  .phase.dropzone{border-color:var(--gold);background:#fffdf5}
+  label.item{display:flex;align-items:flex-start;gap:11px;padding:10px 12px;border-radius:9px;cursor:pointer;font-size:15px}
+  label.item:hover{background:#f5f9fe}
+  label.item input{margin-top:3px;width:18px;height:18px;flex:0 0 auto}
+  label.item.done span{text-decoration:line-through;color:var(--muted)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:20px;margin-left:6px;background:#e2edfb;color:#13407d}
+  .reset{background:#e6edf5;color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;margin:8px 0 40px}
+  footer{padding:10px 0 50px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Your First 90 Days</h1>
+  <p>The dropout zone is weeks 2–4. Push through — first loads land weeks 5–8.</p>
+  <a class="home" href="index.html">← Back to training home</a>
+</div></header>
+
+<div class="wrap">
+  <div class="progwrap">
+    <b id="pct">0% complete</b> <span id="count" style="color:var(--muted);font-size:14px"></span>
+    <div class="bar"><div id="fill"></div></div>
+  </div>
+  <div id="list"></div>
+  <button class="reset" onclick="resetAll()">↺ Reset progress</button>
+</div>
+<footer><div class="wrap">BASE Carriers · progress saves automatically on this device. Activity targets are guides — talk to Amedeo about your numbers.</div></footer>
+
+<script>
+const PHASES = [
+ {t:"Week 1 — Learn the product", s:"Goal: explain the business cold, no notes.", drop:false, items:[
+   "Read Part 1 (Operations) end to end",
+   "Read Part 2 (Selling Playbook) end to end",
+   "Pass the onboarding test (80%+)",
+   "Shadow Amedeo on calls / in dispatch",
+   "Set up your phone, email, and CRM access",
+   "Get the internal target list + rate floors from Amedeo",
+   "Say the cold-call opener out loud 20 times",
+ ]},
+ {t:"Weeks 2–4 — Backhaul cold calling", s:"The dropout zone. Stack the inputs and show up tomorrow.", drop:true, items:[
+   "Build your prospect list (backhaul shippers near the lane)",
+   "Run 2 call blocks/day, Tue–Thu (7:30–9 / 3:30–5)",
+   "Hit ~200 dials/week",
+   "Leave a VM + text within 5 min on every no-answer",
+   "Log every dial and outcome in the CRM",
+   "Work the overdue customer touch-plan backlog",
+   "Record one call block/week and listen back",
+   "Friday: review your numbers, change ONE thing next week",
+ ]},
+ {t:"Month 2 — First loads + Tier 2", s:"Convert reps into booked freight.", drop:false, items:[
+   "Book your first backhaul load",
+   "Start working Tier-2 banana prospects",
+   "Get a customer to send you 2 lanes to quote",
+   "Build a repeatable multichannel sequence (email→call→text)",
+   "Review win/loss patterns — double down on what converts",
+ ]},
+ {t:"Month 3 — Earn the Tier-1 accounts", s:"Now you've proven you won't fumble them.", drop:false, items:[
+   "Take on a Tier-1 banana account (with Amedeo's blessing)",
+   "Land repeat backhaul business",
+   "Have 1–2 real banana opportunities in active play",
+   "Own your CRM hygiene — nothing falls through",
+ ]},
+];
+
+const KEY="base_onboarding_checklist_v1";
+let state = JSON.parse(localStorage.getItem(KEY) || "{}");
+const list=document.getElementById("list");
+let total=0;
+PHASES.forEach((p,pi)=>{
+  const div=document.createElement("div");
+  div.className="phase"+(p.drop?" dropzone":"");
+  let html=`<h2>${p.t}</h2><div class="sub">${p.s}</div>`;
+  p.items.forEach((it,ii)=>{
+    const id=`p${pi}i${ii}`; total++;
+    const ck=state[id]?"checked":"";
+    html+=`<label class="item ${state[id]?'done':''}" id="lbl_${id}"><input type="checkbox" id="${id}" ${ck} onchange="toggle('${id}')"><span>${it}</span></label>`;
+  });
+  div.innerHTML=html; list.appendChild(div);
+});
+function toggle(id){
+  state[id]=document.getElementById(id).checked;
+  localStorage.setItem(KEY,JSON.stringify(state));
+  document.getElementById("lbl_"+id).classList.toggle("done",state[id]);
+  render();
+}
+function render(){
+  const done=Object.values(state).filter(Boolean).length;
+  const pct=Math.round(done/total*100);
+  document.getElementById("fill").style.width=pct+"%";
+  document.getElementById("pct").textContent=pct+"% complete";
+  document.getElementById("count").textContent=`(${done} of ${total} done)`;
+}
+function resetAll(){ if(confirm("Clear all checkmarks?")){state={};localStorage.removeItem(KEY);document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);document.querySelectorAll('.item').forEach(l=>l.classList.remove('done'));render();} }
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Email & Text Templates — BASE Carriers</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{--navy:#0c2340;--blue:#1d6fd6;--sky:#e8f1fc;--gold:#f4b41a;--green:#1f9d57;--ink:#1a2332;--muted:#5b6b7e;--line:#dbe4ee;--bg:#f6f9fc;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  header{background:linear-gradient(135deg,#143a66,#1f9d57);color:#fff;padding:44px 0 48px}
+  header h1{margin:0 0 6px;font-size:32px}header p{margin:0;color:#d6f0e2}
+  .home{display:inline-block;margin:18px 0 0;color:var(--blue);text-decoration:none;font-weight:700;font-size:14px}
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:23px;color:var(--navy);margin:0 0 4px}
+  .lead{color:var(--muted);font-size:16px;margin:2px 0 16px}
+  h3{font-size:17px;color:var(--navy);margin:20px 0 6px}
+  .tmpl{position:relative;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 18px;margin:12px 0;font-size:14.5px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5}
+  .tmpl .copy{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer}
+  .tmpl .copy:hover{background:#1559ad}
+  .label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:6px}
+  .callout{border-left:5px solid var(--gold);background:#fff8e6;border-radius:0 12px 12px 0;padding:14px 18px;margin:16px 0;font-size:14.5px}
+  .callout b{color:var(--navy)}
+  footer{padding:24px 0 56px;color:var(--muted);font-size:13px}
+  code{background:#eef4fb;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Email & Text Templates</h1>
+  <p>Copy, paste, fill the [brackets], send. Make them your own.</p>
+</div></header>
+<div class="wrap"><a class="home" href="index.html">← Back to training home</a>
+
+<section>
+  <h2>🚛 Backhaul shipper — cold email</h2>
+  <div class="lead">Selling our empty southbound capacity. Remember: never say "backhaul" or "capacity" to a shipper. No broker-keywords in the subject.</div>
+  <div class="label">Subject line</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>A scheduled southbound truck out of [City], every week</div>
+  <div class="label">Body</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>Hi [Name],
+
+I run a small drayage operation out of Wilmington DE — our trucks roll up I-95 to the Boston area and back every week, and the southbound leg runs empty 3–4 days a week regardless.
+
+Rather than chase spot loads, I'd rather give one shipper in [City] a standing slot — a [Tuesday/Thursday] southbound truck, every week, at a flat rate that won't move with the market. Effectively a dedicated lane with no contract minimum on your side.
+
+40' container, up to 40,000 lbs, ~20 pallets. If you push anything south out of [City], is it worth me quoting one lane?
+
+— [You], BASE Carriers Transport LLC
+MC-1299577 · cell: [your cell]</div>
+</section>
+
+<section>
+  <h2>📞 Backhaul — voicemail + text combo</h2>
+  <div class="lead">Always leave the VM <b>and</b> text within 5 minutes — the combo is ~4× the callback rate.</div>
+  <div class="label">22-second voicemail</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>Hey [Name], [you] with BASE Carriers in Wilmington — calling because we run empty containers south on I-95 every week, thought we might save [Company] money on outbound to the Carolinas. I'll text you the details. Number's [cell], again [cell]. Thanks.</div>
+  <div class="label">Text within 5 minutes</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>[Name], just left you a vm — [you] from BASE Carriers. Question on your outbound from [City] heading south. Easier by text? STOP to opt out.</div>
+</section>
+
+<section>
+  <h2>🍌 Banana customer — outreach</h2>
+  <div class="lead">Different game: family businesses, relationship-first. Lead with local proof, not capacity. Get the owner.</div>
+  <div class="label">Call / voicemail opener</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>Hi [Name] — [you] with BASE Carriers out of the Port of Wilmington. We pull Dole and Chiquita containers off the port every day. I'm the kind of outfit where you get the owner on the phone, not a call center. Figured I'd reach out directly — who handles your drayage off the port right now?</div>
+  <div class="label">Short email (after a call or warm intro)</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>Hi [Name],
+
+Good talking just now. Quick recap of what we do: direct Dole/Chiquita pulls out of the Port of Wilmington DE — we carry the insurance, the chassis pool agreements, and all the port credentials, and you deal with me directly, not a desk.
+
+If you give me one lane you run regularly, I'll quote it and you can see how we stack up. No pressure, no contract.
+
+— [You], BASE Carriers Transport LLC
+MC-1299577 · cell: [your cell]</div>
+</section>
+
+<section>
+  <h2>🤝 The trial-load close (both motions)</h2>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>Tell you what — give me 2 lanes you ran last week with destinations and rough rates. I'll quote them within 24 hours. If I beat your number, would you run one load with us as a test?</div>
+</section>
+
+<section>
+  <h2>🃏 Pre-call card — tape this to your monitor</h2>
+  <div class="lead">Read it before every call block.</div>
+  <div class="tmpl"><button class="copy" onclick="cp(this)">Copy</button>OPENER (permission):
+"Hey [Name]? — it's [you] with BASE Carriers in Wilmington. I know I'm calling out of the blue. Can I take 30 seconds and tell you why, and you can tell me to bug off if it's not relevant?"
+
+DISCOVERY (ask, then SHUT UP):
+1. Who handles your outbound freight — in-house, broker, or asset?
+2. Typical week south out of [City] — loads, destinations?
+3. Roughly what are you paying per load on those lanes?
+
+VOICE: stand up · smile · ~140 wpm (slower than feels natural) · lower pitch · pause after questions
+
+WHEN: Tue/Wed/Thu · 7:30–9 AM & 3:30–5 PM · 2 blocks/day max
+
+GOAL THIS BLOCK: 30 dials · 4 real convos · 1 "send me 2 lanes" yes</div>
+  <div class="callout"><b>Banned subject-line words</b> (shippers auto-archive): capacity, lanes, partner, backhaul, broker, freight, follow-up. <b>Use instead:</b> scheduled, southbound, empty, [City]-to-[City], slot, every Tuesday.</div>
+</section>
+
+</div>
+<footer><div class="wrap">BASE Carriers Transport LLC · scripts are starting points — make them sound like you. Specific rates & customer names are in the internal playbook.</div></footer>
+
+<script>
+function cp(btn){
+  const txt = btn.parentElement.innerText.replace(/^Copy\s*/,'').trim();
+  navigator.clipboard.writeText(txt).then(()=>{btn.textContent='Copied ✓';setTimeout(()=>btn.textContent='Copy',1500);});
+}
+</script>
+</body>
+</html>
