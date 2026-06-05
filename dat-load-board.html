@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Posting Loads on DAT — BASE Carriers</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{--navy:#0c2340;--blue:#1d6fd6;--sky:#e8f1fc;--gold:#f4b41a;--green:#1f9d57;--red:#d64545;--ink:#1a2332;--muted:#5b6b7e;--line:#dbe4ee;--bg:#f6f9fc;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  header{background:linear-gradient(135deg,#0c2340,#1d6fd6);color:#fff;padding:44px 0 48px}
+  header h1{margin:0 0 6px;font-size:32px}header p{margin:0;color:#cfe0f5}
+  .home{display:inline-block;margin:18px 0 0;color:#fff;text-decoration:none;font-weight:700;font-size:14px;opacity:.9}
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:23px;color:var(--navy);margin:0 0 4px}
+  h2 .num{display:inline-block;background:var(--blue);color:#fff;width:32px;height:32px;border-radius:8px;text-align:center;line-height:32px;font-size:15px;margin-right:10px;vertical-align:middle}
+  .lead{color:var(--muted);font-size:16px;margin:2px 0 16px}
+  h3{font-size:17px;color:var(--navy2,#143a66);margin:20px 0 6px}
+  p{margin:10px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+  td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#fafcfe}
+  .steps{counter-reset:s;margin:14px 0}
+  .step{position:relative;padding:12px 16px 12px 56px;background:#fff;border:1px solid var(--line);border-radius:11px;margin:9px 0}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;background:var(--blue);color:#fff;border-radius:50%;text-align:center;line-height:30px;font-weight:700}
+  .step b{color:var(--navy)}
+  .callout{border-left:5px solid var(--blue);background:var(--sky);border-radius:0 12px 12px 0;padding:14px 18px;margin:16px 0;font-size:14.5px}
+  .callout.gold{border-color:var(--gold);background:#fff8e6}
+  .callout.red{border-color:var(--red);background:#fdeeee}
+  .callout b{color:var(--navy)}
+  .mono{position:relative;background:#0c2340;color:#eaf2fb;border-radius:12px;padding:16px 18px;margin:12px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;white-space:pre-wrap;line-height:1.5}
+  .mono .copy{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .ok{color:var(--green);font-weight:700}.no{color:var(--red);font-weight:700}
+  footer{padding:24px 0 56px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Posting Loads on the DAT Load Board</h1>
+  <p>How to cover a load with a carrier — and price it right.</p>
+  <a class="home" href="index.html">← Back to training home</a>
+</div></header>
+<div class="wrap">
+
+<section>
+  <h2><span class="num">1</span>What DAT is &amp; when you'll use it</h2>
+  <div class="lead">DAT is the biggest freight load board. Brokers post loads; carriers search for them.</div>
+  <p>You'll use DAT in three situations:</p>
+  <table>
+    <tr><th>Situation</th><th>What you do on DAT</th></tr>
+    <tr><td>You booked freight and need a truck</td><td><b>Post the load</b> so carriers find it and call/email you with rates</td></tr>
+    <tr><td>You're quoting a customer and need to price it</td><td>Check <b>DAT Rate View</b> (market rates) so you don't underbid or overpay</td></tr>
+    <tr><td>You have an empty truck to fill (backhaul)</td><td><b>Post truck availability</b> or search loads for that lane</td></tr>
+  </table>
+  <div class="callout gold"><b>The point of posting a load:</b> get the load in front of hundreds of carriers at once instead of cold-calling them one by one. A well-posted load gets covered fast and at a fair rate.</div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>How to post a load — step by step</h2>
+  <div class="steps">
+    <div class="step"><b>Origin &amp; destination.</b> City/state for pickup and delivery. Be exact — the city drives who sees it.</div>
+    <div class="step"><b>Equipment type.</b> Pick the right one or the wrong carriers see it: <b>Power Only</b> (carrier brings the tractor only — our port containers), <b>Reefer</b> (refrigerated — bananas/produce), <b>Van</b> (dry boxed freight), <b>Flatbed</b> (lumber, steel, building materials).</div>
+    <div class="step"><b>Full or Partial.</b> Almost always <b>Full (FTL)</b> for us.</div>
+    <div class="step"><b>Weight &amp; length.</b> e.g. 40,000 lbs. Don't overstate weight (scares carriers off).</div>
+    <div class="step"><b>Pickup &amp; delivery dates.</b> The available date(s). Carriers filter by date hard — get it right.</div>
+    <div class="step"><b>Rate.</b> Post your target rate, or leave blank to collect bids. <span class="ok">Anchor high</span> if you post a number — you negotiate down, never up.</div>
+    <div class="step"><b>Contact info.</b> Your name, phone (carriers call/text first), and email. Make it easy to reach you.</div>
+    <div class="step"><b>Reference #.</b> Your internal load number so you can match the call to the load.</div>
+    <div class="step"><b>Comment box.</b> The most important free-text field — see §3.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">3</span>The comment box — where you win or lose carriers</h2>
+  <div class="lead">It's character-limited (~140). The structured fields cover origin/dest/equipment/rate, so use the comment for what <b>filters</b> and <b>sells</b> the load.</div>
+  <p>Lead with the deal-breakers (so unqualified carriers self-select out) and the perks (so the right ones lean in):</p>
+  <div class="mono"><button class="copy" onclick="cp(this)">Copy</button>DEDICATED 40/wk. Power-only, port supplies chassis. TWIC REQUIRED. Drop &amp; hook by 5AM, return empty to Wilmington port. Quick pay.</div>
+  <table>
+    <tr><th>Put in the comment…</th><th>Why</th></tr>
+    <tr><td><b>TWIC REQUIRED</b> / credentials</td><td>#1 filter — saves calls from carriers who can't run it</td></tr>
+    <tr><td><b>Power-only / chassis supplied</b></td><td>Tells them they don't bring a trailer + removes the chassis worry</td></tr>
+    <tr><td><b>Drop &amp; hook</b> or <b>live unload</b></td><td>Sets the expectation up front</td></tr>
+    <tr><td><b>DEDICATED / weekly volume</b></td><td>The hook — carriers chase recurring lanes, not one-offs</td></tr>
+    <tr><td><b>Quick pay</b> + your number</td><td>Drives fast response (text beats call for owner-ops)</td></tr>
+  </table>
+  <div class="callout red"><b>Don't:</b> dump origin/dest/rate into the comment (they're already structured fields) — you'll waste your 140 characters. And don't advertise a higher weight than the load actually is.</div>
+</section>
+
+<section>
+  <h2><span class="num">4</span>Price it with DAT Rate View first</h2>
+  <div class="lead">Never post a rate blind. Check the market before you quote a customer or pay a carrier.</div>
+  <p>DAT Rate View shows the recent average <b>spot</b> and <b>contract</b> rate for a lane. Use it to:</p>
+  <ul>
+    <li><b>Quote your customer</b> with confidence (don't underbid your own margin away).</li>
+    <li><b>Know what carriers expect</b> so you don't overpay — or post a rate so low nobody calls.</li>
+    <li><b>Spot a good lane</b> — if the market rate is well above what you can cover it for, that's margin.</li>
+  </ul>
+  <div class="callout"><b>Rule:</b> you make money on the <b>spread</b> (customer rate − carrier rate). Rate View protects both sides of that spread. Always confirm BASE's floor/target with Amedeo before committing.</div>
+</section>
+
+<section>
+  <h2><span class="num">5</span>Posting truck availability (backhaul)</h2>
+  <div class="lead">The flip side: when we have an empty truck, post the <i>truck</i> to find a load for it.</div>
+  <p>For the empty southbound leg, post available capacity: origin (e.g. Boston area), destination region (I-95 south), equipment (40' container / van), available date. Shippers and their brokers search trucks the same way carriers search loads.</p>
+  <div class="callout red"><b>Broker rule — don't forget it:</b> BASE can only take freight from <b>direct shippers</b>, never from another broker. When a "load" you find on the board is posted by a broker, that's double-brokering — a hard no. Use the board to find <b>shippers</b>, not to resell another broker's freight.</div>
+</section>
+
+<section>
+  <h2><span class="num">6</span>Handling responses &amp; vetting the carrier</h2>
+  <div class="grid2">
+    <div>
+      <h3 class="ok">✅ Do</h3>
+      <ul>
+        <li><b>Answer fast</b> — first broker to respond often wins the truck</li>
+        <li><b>Repost</b> to stay near the top of search results</li>
+        <li><b>Confirm</b> MC/DOT, authority, insurance &amp; TWIC before you commit (ops/the system checks this)</li>
+        <li><b>Get the rate con signed</b> before the truck rolls</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="no">🚫 Don't</h3>
+      <ul>
+        <li>Post a load you can't actually cover</li>
+        <li>Book a carrier you haven't vetted</li>
+        <li>Quote below BASE's floor without Amedeo</li>
+        <li>Accept a load from another broker</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+<footer><div class="wrap">BASE Carriers Transport LLC · DAT mechanics are general; confirm BASE's lane floors, target margins, and carrier-vetting process with Amedeo.</div></footer>
+<script>
+function cp(btn){const t=btn.parentElement.innerText.replace(/^Copy\s*/,'').trim();navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied ✓';setTimeout(()=>btn.textContent='Copy',1500);});}
+</script>
+</body>
+</html>
