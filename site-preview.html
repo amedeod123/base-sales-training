@@ -6,6 +6,8 @@
 <!-- REMOVE THE NEXT LINE WHEN THIS GOES LIVE ON basecarriers.com -->
 <meta name="robots" content="noindex, nofollow">
 <title>BASE Carriers — Refrigerated Produce Freight out of the Port of Wilmington, DE</title>
+<link rel="icon" type="image/png" href="assets/base-mark-green.png">
+<meta property="og:image" content="assets/base-mark.png">
 <meta name="description" content="Family-owned freight brokerage moving 780+ refrigerated and container loads a month off the Port of Wilmington piers. TWIC drivers, temperature-documented deliveries, live tracking link on every load. MC-1299577.">
 <meta property="og:title" content="BASE Carriers — Refrigerated Produce Freight, Port of Wilmington DE">
 <meta property="og:description" content="781 loads moved in May 2026. Daily pier pickups, temp-documented reefer freight, live tracking on every load. Family-owned. MC-1299577.">
@@ -47,7 +49,7 @@
   @media(max-width:840px){ nav .links a:not(.navphone){display:none;} }
 
   /* HERO — niche-specific value prop above the fold; dual-path CTAs */
-  .hero{background:linear-gradient(168deg, var(--green-deep) 0%, #0A2E18 90%); color:#fff; padding:74px 0 56px;}
+  .hero{background:linear-gradient(168deg, rgba(11,46,24,.93) 0%, rgba(8,34,18,.86) 90%), url('assets/containers.jpg'); background-size:cover; background-position:center; color:#fff; padding:74px 0 56px;}
   .hero .kicker{color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:12.5px; margin-bottom:14px;}
   .hero h1{font-size:clamp(30px,4.8vw,48px); line-height:1.13; font-weight:800; max-width:780px; letter-spacing:-.01em;}
   .hero p.lead{margin-top:16px; font-size:18px; max-width:620px; color:#D9E4D8;}
@@ -133,13 +135,27 @@
   footer h5{color:#fff; font-size:13px; margin-bottom:8px; letter-spacing:.05em; text-transform:uppercase;}
   footer a{color:#CFDCCE; text-decoration:none;}
   footer .legal{margin-top:26px; padding-top:16px; border-top:1px solid rgba(255,255,255,.12); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px;}
+
+  /* LOGO + IMAGERY */
+  .brand{display:flex; align-items:center; gap:11px; text-decoration:none;}
+  .brand img{height:36px; width:auto; display:block;}
+  .brand .wm{font-weight:800; font-size:19px; color:var(--green-deep); letter-spacing:.01em; line-height:1;}
+  .brand .wm b{color:var(--ink);}
+  @media(max-width:520px){ .brand .wm{font-size:16px;} .brand img{height:30px;} }
+  .gallery{padding:48px 0; background:var(--paper);}
+  .ggrid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px;}
+  @media(max-width:760px){.ggrid{grid-template-columns:1fr;}}
+  .ggrid figure{position:relative; margin:0; border-radius:14px; overflow:hidden; box-shadow:0 10px 26px rgba(20,40,25,.10);}
+  .ggrid img{width:100%; height:230px; object-fit:cover; display:block;}
+  .ggrid figcaption{position:absolute; left:0; right:0; bottom:0; padding:26px 16px 13px; color:#fff; font-size:13.5px; font-weight:600; background:linear-gradient(transparent, rgba(10,36,21,.9));}
+  .footmark{height:30px; width:auto; margin-bottom:11px; display:block;}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="#top">BASE <b>CARRIERS</b></a>
+    <a class="brand" href="#top"><img src="assets/base-mark-green.png" alt="BASE Carriers logo"><span class="wm">BASE <b>CARRIERS</b></span></a>
     <div class="links">
       <a href="#shippers">For Shippers</a>
       <a href="#coldchain">Cold Chain &amp; Claims</a>
@@ -188,6 +204,21 @@
     <div class="photo-slot">
       [ PHOTO SLOT — real photo of the partners / team at the Wilmington yard.<br>
       Research note: eye-tracking studies show visitors scrutinize real team photos and skip stock imagery — this slot must be a real photo, never stock. ]
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="kick">On the pier, every morning</div>
+    <h2>This is the work — not a stock photo of someone else's freight.</h2>
+    <div class="ggrid">
+      <figure><img src="assets/port-ship.jpg" alt="Refrigerated container vessel discharging at the berth">
+        <figcaption>Reefer vessels discharged at the berth</figcaption></figure>
+      <figure><img src="assets/crane-truck.jpg" alt="Refrigerated container lifted off the stack onto a chassis">
+        <figcaption>Containers off the pier onto our chassis</figcaption></figure>
+      <figure><img src="assets/bananas.jpg" alt="Fresh bananas bound for Northeast ripening rooms">
+        <figcaption>Fruit to the ripening room the same day</figcaption></figure>
     </div>
   </div>
 </section>
@@ -310,6 +341,7 @@
   <div class="wrap">
     <div class="cols">
       <div>
+        <img class="footmark" src="assets/base-mark-green.png" alt="BASE Carriers">
         <h5>BASE Carriers</h5>
         <div>Family-owned produce &amp; port freight brokerage.<br>56 J Caldwell Ave, Wilmington, DE 19801</div>
       </div>
