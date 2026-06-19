@@ -99,7 +99,7 @@
   /* HERO — niche-specific value prop above the fold; dual-path CTAs */
   .hero{position:relative; overflow:hidden; background:var(--green-deep); color:#fff; padding:74px 0 56px;}
   .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
-  .hero-overlay{position:absolute; inset:0; z-index:1; background:linear-gradient(168deg, rgba(11,46,24,.93) 0%, rgba(8,34,18,.86) 90%);}
+  .hero-overlay{position:absolute; inset:0; z-index:1; background:linear-gradient(96deg, rgba(11,46,24,.95) 0%, rgba(11,46,24,.88) 34%, rgba(10,40,22,.55) 64%, rgba(10,40,22,.32) 100%);}
   .hero .wrap{position:relative; z-index:2;}
   .hero .kicker{color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:12.5px; margin-bottom:14px;}
   .hero h1{font-size:clamp(30px,4.8vw,48px); line-height:1.13; font-weight:800; max-width:780px; letter-spacing:-.01em;}
@@ -242,6 +242,19 @@
   /* VERIFY (carrier anti-fraud) */
   .verify{margin-top:20px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:11px; padding:16px 18px; font-size:13.5px; color:#CFDCCE;}
   .verify b{color:#fff;}
+
+  /* HERO CTA + POLISH (v3) */
+  .herocta{margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;}
+  .btn.ghost{border:2px solid rgba(255,255,255,.65); color:#fff; background:transparent;}
+  .btn.ghost:hover{background:rgba(255,255,255,.12);}
+  .navcta{background:var(--accent); color:#231D07 !important; padding:9px 17px; border-radius:9px; font-weight:800 !important;}
+  .navcta:hover{filter:brightness(1.05);}
+  .sicon{font-size:26px; line-height:1; margin-bottom:10px;}
+  .scard, .path{transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;}
+  .scard:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,40,25,.13); border-color:#cfe0d0;}
+  .path:hover{transform:translateY(-2px);}
+  .ggrid img{height:252px;}
+  @media(max-width:840px){ .hero-overlay{background:linear-gradient(180deg, rgba(9,36,20,.85) 0%, rgba(9,36,20,.75) 100%) !important;} }
 </style>
 </head>
 <body>
@@ -253,8 +266,8 @@
       <a href="#shippers">For Shippers</a>
       <a href="#coldchain">Cold Chain &amp; Claims</a>
       <a href="#carriers">For Carriers</a>
-      <a href="#quote">Get a Quote</a>
       <a class="navphone" href="tel:+13025926152">📞 (302) 592-6152</a>
+      <a class="navcta" href="#quote">Get a Quote</a>
     </div>
   </div>
 </nav>
@@ -267,6 +280,10 @@
     <h1>Refrigerated produce freight off the Port of Wilmington piers — handled by a family that's there every morning.</h1>
     <p class="lead">BASE Carriers moved <strong style="color:#fff;">781 loads in May 2026</strong> — bananas and fresh produce from the berth to ripening rooms and terminal markets across the Northeast. TWIC-badged drivers, documented temps, and a live tracking link on every single load.</p>
     <div class="promise">⏱️ Send us a lane and we'll have a rate back to you — usually within the hour.</div>
+    <div class="herocta">
+      <a class="btn gold" href="#quote">Get a rate →</a>
+      <a class="btn ghost" href="tel:+13025926152">📞 (302) 592-6152</a>
+    </div>
     <div class="paths">
       <a class="path" href="#shippers">
         <div class="pt">I ship produce 🍌</div>
@@ -326,12 +343,12 @@
     <h2>Built around fruit that can't wait.</h2>
     <p class="sub">Every service exists because a produce customer needed it. Nothing here is generic.</p>
     <div class="cards">
-      <div class="scard"><span class="tag">Port</span><h3>Pier Drayage</h3><p>TWIC-badged drivers pulling refrigerated containers off the Port of Wilmington daily. Same-day pickups during vessel discharge, with empty returns, EIR paperwork, and per-diem managed so you never eat a fee you didn't cause.</p></div>
-      <div class="scard"><span class="tag">Reefer</span><h3>Refrigerated Truckload</h3><p>Pier to ripening room, Virginia to New England. Pulp temps documented at pickup, temperature requirements specified in writing on every rate confirmation, live tracking your team can watch.</p></div>
-      <div class="scard"><span class="tag">Round trip</span><h3>Drop &amp; Hook + Returns</h3><p>One carrier picks up, delivers, and returns the empty. Fewer handoffs, faster turns, and the container return documented the day it happens.</p></div>
-      <div class="scard"><span class="tag">Yard</span><h3>Transload &amp; Shag</h3><p>Our yard sits minutes from the berth. We shag your container off the pier and cross-dock to your trucks — your Delaware terminal, without owning one.</p></div>
-      <div class="scard"><span class="tag">Dry</span><h3>Dry Van &amp; Specialized</h3><p>Dry freight, lumber, and packaging across the East Coast, with the same vetted carriers and tracking standards as our reefer work.</p></div>
-      <div class="scard"><span class="tag">Auto</span><h3>Auto Transport Division</h3><p>Dealer, auction, and leasing vehicle moves nationwide — open and enclosed.</p></div>
+      <div class="scard"><div class="sicon">⚓</div><span class="tag">Port</span><h3>Pier Drayage</h3><p>TWIC-badged drivers pulling refrigerated containers off the Port of Wilmington daily. Same-day pickups during vessel discharge, with empty returns, EIR paperwork, and per-diem managed so you never eat a fee you didn't cause.</p></div>
+      <div class="scard"><div class="sicon">❄️</div><span class="tag">Reefer</span><h3>Refrigerated Truckload</h3><p>Pier to ripening room, Virginia to New England. Pulp temps documented at pickup, temperature requirements specified in writing on every rate confirmation, live tracking your team can watch.</p></div>
+      <div class="scard"><div class="sicon">🔁</div><span class="tag">Round trip</span><h3>Drop &amp; Hook + Returns</h3><p>One carrier picks up, delivers, and returns the empty. Fewer handoffs, faster turns, and the container return documented the day it happens.</p></div>
+      <div class="scard"><div class="sicon">🏗️</div><span class="tag">Yard</span><h3>Transload &amp; Shag</h3><p>Our yard sits minutes from the berth. We shag your container off the pier and cross-dock to your trucks — your Delaware terminal, without owning one.</p></div>
+      <div class="scard"><div class="sicon">📦</div><span class="tag">Dry</span><h3>Dry Van &amp; Specialized</h3><p>Dry freight, lumber, and packaging across the East Coast, with the same vetted carriers and tracking standards as our reefer work.</p></div>
+      <div class="scard"><div class="sicon">🚗</div><span class="tag">Auto</span><h3>Auto Transport Division</h3><p>Dealer, auction, and leasing vehicle moves nationwide — open and enclosed.</p></div>
     </div>
   </div>
 </section>
